@@ -1,5 +1,5 @@
 Package: idswb
-Title: What the Package Does (One Line, Title Case)
+Title: Exploration of International Debt Statistics from World Bank
 Version: 0.0.0.9000
 Authors@R: 
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
