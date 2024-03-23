@@ -27,7 +27,7 @@ etl_extract.etl_idswb <- function(obj, ...) {
     # subset data
     ids_data <- ids_full_data[[i]]
     # export raw data
-    readr::write_csv(x = ids_data, file = paste0("./data-raw/",ids_file_names[i]))
+    readr::write_csv(x = ids_data, file = ids_file_names[i])
   }
   # invisible
   invisible(obj)
