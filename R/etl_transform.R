@@ -10,23 +10,16 @@
 #' @inheritParams etl::etl_extract
 #' @details This function transforms NYC311 data for years and months specified.
 #'
-etl_transform.etl_idswb <- function(obj, years = lubridate::year(Sys.Date()),
-                                     months = lubridate::month(Sys.Date()), ...) {
-  #check if the year is valid
-  valid_months <- etl::valid_year_month(years, months, begin = "2010-01-01")
-
+etl_transform.etl_idswb <- function(obj, ...) {
+  # pop up message to start
+  message("Transforming raw data ...")
+  Sys.sleep(time = 5)
   #raw dir
-  dir <- attr(obj, "raw_dir")
-  src_length <- nrow(valid_months)
-  dir <- attr(obj, "raw_dir")
-  valid_months <- mutate(valid_months, lcl = paste0(dir, "/nyc311_", valid_months$year, "_", valid_months$month, ".csv"))
+  files_raw <- list.files(path = file.path(attr(obj, "raw_dir")), pattern = ".csv")
 
-  #new dir
-  new_dir <- attr(obj, "load_dir")
-  valid_months <- mutate_(valid_months, new_lcl = ~paste0(new_dir, "/", basename(lcl)))
-  for (i in 1:src_length) {
-    datafile <- readr::read_csv(valid_months$lcl[i])
-    readr::write_delim(datafile, path = valid_months$new_lcl[i], delim = "|", na = "")
+  for (i in seq_along(files_raw)) {
+    datafile <- readr::read_csv(file = file.path(attr(obj, "raw_dir"), files_raw[i]))
+    readr::write_csv(x = datafile, file = file.path(attr(obj, "load_dir"), files_raw[i]))
   }
   invisible(obj)
 }

@@ -18,12 +18,7 @@
   ...
 )
 
-\method{etl_transform}{etl_idswb}(
-  obj,
-  years = lubridate::year(Sys.Date()),
-  months = lubridate::month(Sys.Date()),
-  ...
-)
+\method{etl_transform}{etl_idswb}(obj, ...)
 }
 \arguments{
 \item{obj}{an \code{\link[etl]{etl}} object}
