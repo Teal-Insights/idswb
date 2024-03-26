@@ -7,16 +7,16 @@
 #' @importFrom DBI dbWriteTable
 #' @importFrom lubridate year month
 #' @inheritParams etl::etl_extract
-#' @details This function loads idswb data into a local database for years and months specified.
+#' @details This function loads idswb data into a local database.
 #' @examples
 #' \dontrun{
 #' calls <- etl("idswb")
 #' calls %>%
-#'  etl_extract(years = 2010:2011, months = 1:3, num_calls = 100)
+#'  etl_extract()
 #'
 #' calls %>%
 #'   etl_init() %>%
-#'   etl_update(years = 2010:2011, months = 1:3, num_calls = 100)
+#'   etl_update()
 #'
 #' calls %>%
 #'   tbl("calls") %>%
@@ -26,28 +26,21 @@
 #'   tbl("calls") %>%
 #'   collect()
 #' }
-etl_load.etl_idswb <- function(obj, years = lubridate::year(Sys.Date()),
-                                months = lubridate::month(Sys.Date()), ...) {
-  #check if the year is valid
-  valid_months <- etl::valid_year_month(years, months, begin = "2010-01-01")
+etl_load.etl_idswb <- function(obj, ...) {
+  path = list.files(path = file.path(attr(obj, "load_dir")), pattern = "\\.csv", full.names = TRUE)
+  table = list.files(path = file.path(attr(obj, "load_dir")), pattern = "\\.csv") %>% stringr::str_remove(pattern = ".csv")
+  # source dataframe
+  src <- data.frame(path = path, table = table)
+  # write to Table
+  message("Writing data to the database...")
 
-  #raw dir
-  src_length <- nrow(valid_months)
-  dir <- attr(obj, "raw_dir")
-  valid_months <- mutate(valid_months,
-                         lcl = paste0(dir, "/idswb_", valid_months$year, "_", valid_months$month, ".csv"))
-  #new dir
-  new_dir <- attr(obj, "load_dir")
-  valid_months <- mutate_(valid_months,
-                          new_lcl = ~paste0(new_dir, "/", basename(lcl)))
+  # writind data to database
+  files_raw <- list.files(path = file.path(attr(obj, "load_dir")), pattern = ".csv")
 
-  write_data <- function(..., num_calls) {
-    lapply(valid_months$new_lcl, FUN = DBI::dbWriteTable, conn = obj$con,
-           name = "calls", append = TRUE, sep = "|", ... = ...)
+  for (i in seq_along(files_raw)) {
+    datafile <- readr::read_csv(file = file.path(attr(obj, "load_dir"), files_raw[i]))
+    DBI::dbWriteTable(conn = obj$con, name = table[i], value = datafile)
   }
-  write_data(...)
-
-  #table
-  message("Writing idswb data to the database...")
+  # invisible
   invisible(obj)
 }

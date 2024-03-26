@@ -11,12 +11,7 @@
 
 \method{etl_extract}{etl_idswb}(obj, ...)
 
-\method{etl_load}{etl_idswb}(
-  obj,
-  years = lubridate::year(Sys.Date()),
-  months = lubridate::month(Sys.Date()),
-  ...
-)
+\method{etl_load}{etl_idswb}(obj, ...)
 
 \method{etl_transform}{etl_idswb}(obj, ...)
 }
@@ -38,7 +33,7 @@ etl_transform
 This function downloads International Debt statistics data
 in the raw directory under the folder the user created
 
-This function loads idswb data into a local database for years and months specified.
+This function loads idswb data into a local database.
 
 This function transforms NYC311 data for years and months specified.
 }
@@ -52,11 +47,11 @@ if (require(dplyr)) {
 \dontrun{
 calls <- etl("idswb")
 calls \%>\%
- etl_extract(years = 2010:2011, months = 1:3, num_calls = 100)
+ etl_extract()
 
 calls \%>\%
   etl_init() \%>\%
-  etl_update(years = 2010:2011, months = 1:3, num_calls = 100)
+  etl_update()
 
 calls \%>\%
   tbl("calls") \%>\%

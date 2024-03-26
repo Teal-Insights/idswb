@@ -13,6 +13,7 @@
 etl_transform.etl_idswb <- function(obj, ...) {
   # pop up message to start
   message("Transforming raw data ...")
+  # system sleeps for 5 seconds then proceeds
   Sys.sleep(time = 5)
   #raw dir
   files_raw <- list.files(path = file.path(attr(obj, "raw_dir")), pattern = ".csv")
