@@ -14,7 +14,8 @@
 etl_extract.etl_idswb <- function(obj, ...) {
   message("Extracting raw data...")
   # loading data
-  ids_full_data <- readRDS("./inst/extdata/ids_full_data.rds")
+  ids_path <- file.path("data","ids_full_data.rds")
+  ids_full_data <- readRDS(file = ids_path)
 
   # loop each file in the list
   ids_files <- names(ids_full_data)
