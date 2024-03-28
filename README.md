@@ -6,7 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of idswb is to …
+`idswb` is primarily a data package enabling an efficient method for
+working with [International Debt Statistics from World
+Bank](https://www.worldbank.org/en/programs/debt-statistics/ids) in R.
 
 ## Installation
 
