@@ -19,7 +19,7 @@ etl_transform.etl_idswb <- function(obj, ...) {
   files_raw <- list.files(path = file.path(attr(obj, "raw_dir")), pattern = ".csv")
 
   for (i in seq_along(files_raw)) {
-    datafile <- readr::read_csv(file = file.path(attr(obj, "raw_dir"), files_raw[i]))
+    datafile <- readr::read_csv(file = file.path(attr(obj, "raw_dir"), files_raw[i]), show_col_types = FALSE)
     readr::write_csv(x = datafile, file = file.path(attr(obj, "load_dir"), files_raw[i]))
   }
   invisible(obj)

@@ -32,13 +32,13 @@ etl_load.etl_idswb <- function(obj, ...) {
   # source dataframe
   src <- data.frame(path = path, table = table)
   # write to Table
-  message("Writing data to the database...")
+  message("Loading data to the database...")
 
   # writind data to database
   files_raw <- list.files(path = file.path(attr(obj, "load_dir")), pattern = ".csv")
 
   for (i in seq_along(files_raw)) {
-    datafile <- readr::read_csv(file = file.path(attr(obj, "load_dir"), files_raw[i]))
+    datafile <- readr::read_csv(file = file.path(attr(obj, "load_dir"), files_raw[i]), show_col_types = FALSE)
     DBI::dbWriteTable(conn = obj$con, name = table[i], value = datafile)
   }
   # invisible
