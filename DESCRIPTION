@@ -28,7 +28,7 @@ Suggests:
     testthat (>= 3.0.0)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
-URL: http://github.com/Teal-Insights/idswb
+URL: http://github.com/Teal-Insights/idswb, https://teal-insights.github.io/idswb/
 BugReports: https://github.com/Teal-Insights/idswb/issues
-LazyData: false
+LazyData: true
 Config/testthat/edition: 3

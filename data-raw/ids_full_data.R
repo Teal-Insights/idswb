@@ -34,10 +34,10 @@ ids_full_data = list(
 )
 
 # exporting to ins/extdata directory
-base::save(ids_full_data,file = "inst/extdata/ids_full_data2.rda")
+base::saveRDS(ids_full_data,file = "inst/extdata/ids_full_data2.rds")
 
 # exporting data into data folder
-usethis::use_data(ids_full_data, overwrite = TRUE,compress = "xz",version = 3)
+usethis::use_data(ids_full_data, overwrite = TRUE,compress = "xz")
 
 # ends: -------------------------------------------------------------------
 
