@@ -37,7 +37,7 @@ ids_full_data = list(
 base::save(ids_full_data,file = "inst/extdata/ids_full_data2.rda")
 
 # exporting data into data folder
-usethis::use_data(ids_full_data, overwrite = TRUE,compress = "xz")
+usethis::use_data(ids_full_data, overwrite = TRUE,compress = "xz",version = 3)
 
 # ends: -------------------------------------------------------------------
 

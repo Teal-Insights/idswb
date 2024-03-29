@@ -9,7 +9,7 @@ Description: What the package does (one paragraph).
 License: CC0
 Encoding: UTF-8
 Depends:
-    R (>= 2.10),
+    R (>= 3.5),
     etl
 Imports:
     DBI, 
