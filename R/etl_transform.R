@@ -8,7 +8,7 @@
 #' @importFrom readr write_delim read_csv
 #' @importFrom lubridate year month
 #' @inheritParams etl::etl_extract
-#' @details This function transforms NYC311 data for years and months specified.
+#' @details This function transforms International Debt statistics data for years and months specified.
 #'
 etl_transform.etl_idswb <- function(obj, ...) {
   # pop up message to start

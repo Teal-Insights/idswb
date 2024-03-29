@@ -7,7 +7,7 @@
 #' @importFrom DBI dbWriteTable
 #' @importFrom lubridate year month
 #' @inheritParams etl::etl_extract
-#' @details This function loads idswb data into a local database.
+#' @details This function loads International Debt statistics data into a local database.
 #' @examples
 #' \dontrun{
 #' calls <- etl("idswb")
