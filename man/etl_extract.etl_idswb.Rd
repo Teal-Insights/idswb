@@ -28,9 +28,9 @@ etl_transform
 This function downloads International Debt statistics data
 in the raw directory under the folder the user created
 
-This function loads idswb data into a local database.
+This function loads International Debt statistics data into a local database.
 
-This function transforms NYC311 data for years and months specified.
+This function transforms International Debt statistics data for years and months specified.
 }
 \examples{
 \dontrun{

@@ -41,3 +41,53 @@ library(idswb)
 #> 
 #>     intersect, setdiff, setequal, union
 ```
+
+## creating an etl object
+
+``` r
+# ceating an object
+idswb_ob <-etl("idswb", dir = getwd())
+#> No database was specified so I created one for you at:
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file3dbb5b610c56.sqlite3
+```
+
+## perform extract
+
+``` r
+idswb_ob %>% etl_extract()
+#> Extracting raw data...
+```
+
+## perform transform
+
+``` r
+idswb_ob %>% etl_transform()
+#> Transforming raw data ...
+```
+
+## perform load
+
+``` r
+idswb_ob %>% etl_load()
+#> Loading data to the database...
+```
+
+We can still perform the steps above at once
+
+``` r
+# ceating an object
+idswb_ob <-etl("idswb", dir = getwd())
+#> No database was specified so I created one for you at:
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file3dbb135ed4c7.sqlite3
+
+idswb_ob %>% 
+  # extract
+  etl_extract() %>% 
+  # transform
+  etl_transform() %>% 
+  # load
+  etl_load()
+#> Extracting raw data...
+#> Transforming raw data ...
+#> Loading data to the database...
+```

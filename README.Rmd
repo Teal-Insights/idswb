@@ -47,41 +47,52 @@ library(idswb)
 ```{r}
 
 ```
-
+## creating an etl object
 ```{r}
+# ceating an object
+idswb_ob <-etl("idswb", dir = getwd())
 
 ```
 
 ```{r}
 
 ```
-
+## perform extract
 ```{r}
-
+idswb_ob %>% etl_extract()
 ```
 
 ```{r}
 
 ```
-
+## perform transform
 ```{r}
-
+idswb_ob %>% etl_transform()
 ```
 
 ```{r}
 
 ```
-
+## perform load
 ```{r}
-
+idswb_ob %>% etl_load()
 ```
 
 ```{r}
 
 ```
-
+We can still perform the steps above at once
 ```{r}
+# ceating an object
+idswb_ob <-etl("idswb", dir = getwd())
 
+idswb_ob %>% 
+  # extract
+  etl_extract() %>% 
+  # transform
+  etl_transform() %>% 
+  # load
+  etl_load()
 ```
 
 ```{r}
