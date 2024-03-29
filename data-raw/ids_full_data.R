@@ -33,6 +33,9 @@ ids_full_data = list(
   unique_time = unique_time
 )
 
+# exporting to ins/extdata directory
+base::save(ids_full_data,file = "inst/extdata/ids_full_data.rds", compress = "xz")
+
 # exporting data into data folder
 usethis::use_data(ids_full_data, overwrite = TRUE,compress = "xz")
 
