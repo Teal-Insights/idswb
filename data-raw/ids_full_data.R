@@ -26,15 +26,6 @@ unique_country <- readr::read_csv(file = paste0("../../../../data/ids/", "unique
 unique_series <- readr::read_csv(file = paste0("../../../../data/ids/", "unique_series.csv"))
 unique_time <- readr::read_csv(file = paste0("../../../../data/ids/", "unique_time.csv"))
 
-# list of dataframes
-ids_full_data = list(
-  # ids_wb = df_full,
-  unique_counterpart_area = unique_counterpart_area,
-  unique_country = unique_country,
-  unique_series = unique_series,
-  unique_time = unique_time
-)
-
 # exporting data into data folder
 usethis::use_data(ids_part_one, overwrite = TRUE,compress = "xz")
 usethis::use_data(ids_part_two, overwrite = TRUE,compress = "xz")

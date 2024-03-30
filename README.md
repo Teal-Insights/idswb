@@ -16,6 +16,9 @@ You can install the development version of idswb from
 [GitHub](https://github.com/) with:
 
 ``` r
+# setting options
+options(timeout = 600, scipen = 999)
+
 # install.packages("devtools")
 devtools::install_github("Teal-Insights/idswb")
 ```
@@ -48,7 +51,7 @@ library(idswb)
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file3dbb5b610c56.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file6a5467ab6e3e.sqlite3
 ```
 
 ## perform extract
@@ -78,7 +81,7 @@ We can still perform the steps above at once
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file3dbb135ed4c7.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file6a545a616006.sqlite3
 
 idswb_ob %>% 
   # extract
