@@ -37,7 +37,7 @@ ids_full_data = list(
 base::saveRDS(ids_full_data,file = "inst/extdata/ids_full_data2.rds", compress = "xz")
 
 # exporting data into data folder
-usethis::use_data(unique_counterpart_area, overwrite = TRUE,compress = "xz")
+usethis::use_data(unique_series, overwrite = TRUE,compress = "xz")
 
 # ends: -------------------------------------------------------------------
 
