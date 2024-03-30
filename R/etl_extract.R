@@ -13,8 +13,22 @@
 #' @export
 etl_extract.etl_idswb <- function(obj, ...) {
   message("Extracting raw data...")
+
   # loading data
-  ids_full_data <- idswb::ids_full_data
+  df_full = dplyr::bind_rows(idswb::ids_part_one, idswb::ids_part_two)
+  unique_counterpart_area <- idswb::unique_counterpart_area
+  unique_country <- idswb::unique_country
+  unique_series <- idswb::unique_series
+  unique_time <- idswb::unique_time
+
+  # list of dataframes
+  ids_full_data = list(
+    ids_wb = df_full,
+    unique_counterpart_area = unique_counterpart_area,
+    unique_country = unique_country,
+    unique_series = unique_series,
+    unique_time = unique_time
+  )
 
   # loop each file in the list
   ids_files <- names(ids_full_data)
