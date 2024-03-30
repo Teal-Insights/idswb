@@ -17,6 +17,8 @@ for (i in seq_along(excel_files)) {
 
 # row bind a list of dataframes
 df_full <- data.table::rbindlist(excel_list)
+ids_part_one = df_full[1:1750000,]
+ids_part_two = df_full[-c(1:1750000),]
 
 # metadata
 unique_counterpart_area <- readr::read_csv(file = paste0("../../../../data/ids/", "unique_counterpart_area.csv"))
@@ -34,10 +36,10 @@ ids_full_data = list(
 )
 
 # exporting to ins/extdata directory
-base::saveRDS(ids_full_data,file = "inst/extdata/ids_full_data2.rds", compress = "xz")
+# base::saveRDS(ids_full_data,file = "inst/extdata/ids_full_data2.rds", compress = "xz")
 
 # exporting data into data folder
-usethis::use_data(unique_series, overwrite = TRUE,compress = "xz")
+usethis::use_data(ids_part_one, overwrite = TRUE,compress = "xz")
 
 # ends: -------------------------------------------------------------------
 
