@@ -35,11 +35,13 @@ ids_full_data = list(
   unique_time = unique_time
 )
 
-# exporting to ins/extdata directory
-# base::saveRDS(ids_full_data,file = "inst/extdata/ids_full_data2.rds", compress = "xz")
-
 # exporting data into data folder
+usethis::use_data(ids_part_one, overwrite = TRUE,compress = "xz")
 usethis::use_data(ids_part_two, overwrite = TRUE,compress = "xz")
+usethis::use_data(unique_counterpart_area, overwrite = TRUE,compress = "xz")
+usethis::use_data(unique_country, overwrite = TRUE,compress = "xz")
+usethis::use_data(unique_series, overwrite = TRUE,compress = "xz")
+usethis::use_data(unique_time, overwrite = TRUE,compress = "xz")
 
 # ends: -------------------------------------------------------------------
 
