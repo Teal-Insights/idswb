@@ -26,7 +26,7 @@ unique_time <- readr::read_csv(file = paste0("../../../../data/ids/", "unique_ti
 
 # list of dataframes
 ids_full_data = list(
-  ids_wb = df_full,
+  # ids_wb = df_full,
   unique_counterpart_area = unique_counterpart_area,
   unique_country = unique_country,
   unique_series = unique_series,
@@ -34,7 +34,7 @@ ids_full_data = list(
 )
 
 # exporting to ins/extdata directory
-base::saveRDS(ids_full_data,file = "inst/extdata/ids_full_data2.rds")
+base::saveRDS(ids_full_data,file = "inst/extdata/ids_full_data2.rds", compress = "xz")
 
 # exporting data into data folder
 usethis::use_data(ids_full_data, overwrite = TRUE,compress = "xz")
