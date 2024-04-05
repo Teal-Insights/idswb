@@ -3,22 +3,9 @@
 # loading necessary libraries
 library(magrittr)
 
-# list excel files --------------------------------------------------------
-excel_files <- list.files(path = '../../../../data/ids', pattern = ".xlsx")
-
-# read excel files --------------------------------------------------------
-excel_list <- list()
-for (i in seq_along(excel_files)) {
-  # pop up message
-  message(paste0("Reading ",excel_files[i]))
-  # reading files
-  excel_list[[i]] <- readxl::read_excel(path = paste0("../../../../data/ids/",excel_files[i]))
-}
-
-# row bind a list of dataframes
-df_full <- data.table::rbindlist(excel_list)
-ids_part_one = df_full[1:1750000,]
-ids_part_two = df_full[-c(1:1750000),]
+# loading data: -----------------------------------------------------------
+# main data
+ids <- readr::read_rds(file = "../../../../data/ids/ids_data_released_2024-02-29.rds")
 
 # metadata
 unique_counterpart_area <- readr::read_csv(file = paste0("../../../../data/ids/", "unique_counterpart_area.csv"))
@@ -27,8 +14,7 @@ unique_series <- readr::read_csv(file = paste0("../../../../data/ids/", "unique_
 unique_time <- readr::read_csv(file = paste0("../../../../data/ids/", "unique_time.csv"))
 
 # exporting data into data folder
-usethis::use_data(ids_part_one, overwrite = TRUE,compress = "xz")
-usethis::use_data(ids_part_two, overwrite = TRUE,compress = "xz")
+usethis::use_data(ids, overwrite = TRUE,compress = "xz")
 usethis::use_data(unique_counterpart_area, overwrite = TRUE,compress = "xz")
 usethis::use_data(unique_country, overwrite = TRUE,compress = "xz")
 usethis::use_data(unique_series, overwrite = TRUE,compress = "xz")
