@@ -51,6 +51,8 @@ library(knitr)
 
 ```
 ## creating an etl object
+
+We create an ETL object by specifying a string that defines the object's class, and use the package `idswb` to gain access to the relevant data.
 ```{r}
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
@@ -60,7 +62,10 @@ idswb_ob <-etl("idswb", dir = getwd())
 ```{r}
 
 ```
-## perform extract
+
+##  Extract
+
+The first step here is to acquire data
 ```{r}
 idswb_ob %>% etl_extract()
 ```
@@ -68,7 +73,9 @@ idswb_ob %>% etl_extract()
 ```{r}
 
 ```
-## perform transform
+## Transform
+
+This data might require conversion from its original format into files that are appropriate for SQL import, typically in CSV format.
 ```{r}
 idswb_ob %>% etl_transform()
 ```
@@ -76,7 +83,9 @@ idswb_ob %>% etl_transform()
 ```{r}
 
 ```
-## perform load
+## Load
+
+Fill the SQL database with the processed data.
 ```{r}
 idswb_ob %>% etl_load()
 ```

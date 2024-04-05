@@ -38,28 +38,38 @@ library(knitr)
 
 ## creating an etl object
 
+We create an ETL object by specifying a string that defines the object’s
+class, and use the package `idswb` to gain access to the relevant data.
+
 ``` r
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file313e2bd80cfd.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file329227a12cd6.sqlite3
 ```
 
-## perform extract
+## Extract
+
+The first step here is to acquire data
 
 ``` r
 idswb_ob %>% etl_extract()
 #> Extracting raw data...
 ```
 
-## perform transform
+## Transform
+
+This data might require conversion from its original format into files
+that are appropriate for SQL import, typically in CSV format.
 
 ``` r
 idswb_ob %>% etl_transform()
 #> Transforming raw data ...
 ```
 
-## perform load
+## Load
+
+Fill the SQL database with the processed data.
 
 ``` r
 idswb_ob %>% etl_load()
@@ -72,7 +82,7 @@ We can still perform the steps above at once
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file313e13dd4e4a.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file32924779abf.sqlite3
 
 idswb_ob %>% 
   # extract
