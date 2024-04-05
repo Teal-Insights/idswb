@@ -98,11 +98,14 @@ unique_series %>% head() %>% kable()
 unique_time %>% head() %>% kable()
 ```
 
-| ids_time_id      | ids_time_name  |
-|:-----------------|:---------------|
-| YRwb_creditor_id | wb_creditor_id |
-| YRyear           | year           |
-| YRids_value      | ids_value      |
+| ids_time_id | ids_time_name |
+|:------------|--------------:|
+| YR1970      |          1970 |
+| YR1971      |          1971 |
+| YR1972      |          1972 |
+| YR1973      |          1973 |
+| YR1974      |          1974 |
+| YR1975      |          1975 |
 
 ## creating an etl object
 
@@ -113,7 +116,7 @@ class, and use the package `idswb` to gain access to the relevant data.
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file3835abd5b34.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file40fd26fbccc2.sqlite3
 ```
 
 ## Extract
@@ -150,7 +153,7 @@ We can still perform the steps above at once
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file383524f50b55.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file40fd111f72c4.sqlite3
 
 idswb_ob %>% 
   # extract
