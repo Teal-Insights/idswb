@@ -42,9 +42,9 @@ This package will likely never be published on [CRAN](https://cran.r-project.org
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r warning=FALSE, message=FALSE}
 library(idswb)
-
+library(knitr)
 ```
 
 ```{r}
@@ -103,7 +103,7 @@ idswb_ob %>%
 ```
 ## Querying data
 ```{r}
-get_debt(debtor = "Kenya", by_year = 2022)
+get_debt(debtor = "Kenya", by_year = 2022) %>% kable()
 ```
 
 ```{r}

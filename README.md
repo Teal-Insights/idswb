@@ -33,16 +33,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(idswb)
-#> Loading required package: etl
-#> Loading required package: dplyr
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+library(knitr)
 ```
 
 ## creating an etl object
@@ -51,7 +42,7 @@ library(idswb)
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2dfe7b504d46.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2fd064ab5d04.sqlite3
 ```
 
 ## perform extract
@@ -81,7 +72,7 @@ We can still perform the steps above at once
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2dfe356a4f38.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2fd0361b7909.sqlite3
 
 idswb_ob %>% 
   # extract
@@ -98,19 +89,14 @@ idswb_ob %>%
 ## Querying data
 
 ``` r
-get_debt(debtor = "Kenya", by_year = 2022)
-#>                                                         series             id
-#> 1                              External Debt - PPG - Bilateral DT.DOD.BLAT.CD
-#> 2                                  External Debt - PPG - Bonds DT.DOD.PBND.CD
-#> 3                           External Debt - PPG - Multilateral DT.DOD.MLAT.CD
-#> 4                External Debt - PPG - Other Private Creditors DT.DOD.PROP.CD
-#> 5 External Debt - PPG - Private Banks & Financial Institutions DT.DOD.PCBK.CD
-#> 6                                  External Debt - PPG - Total DT.DOD.DPPG.CD
-#>   year debtor      China       World
-#> 1 2022  Kenya 6685750503 10119631310
-#> 2 2022  Kenya          0  7100000000
-#> 3 2022  Kenya          0 16719778200
-#> 4 2022  Kenya          0           0
-#> 5 2022  Kenya          0  1097776462
-#> 6 2022  Kenya 6685750503 35037185972
+get_debt(debtor = "Kenya", by_year = 2022) %>% kable()
 ```
+
+| series                                                       | id             | year | debtor |      China |       World |
+|:-------------------------------------------------------------|:---------------|:-----|:-------|-----------:|------------:|
+| External Debt - PPG - Bilateral                              | DT.DOD.BLAT.CD | 2022 | Kenya  | 6685750503 | 10119631310 |
+| External Debt - PPG - Bonds                                  | DT.DOD.PBND.CD | 2022 | Kenya  |          0 |  7100000000 |
+| External Debt - PPG - Multilateral                           | DT.DOD.MLAT.CD | 2022 | Kenya  |          0 | 16719778200 |
+| External Debt - PPG - Other Private Creditors                | DT.DOD.PROP.CD | 2022 | Kenya  |          0 |           0 |
+| External Debt - PPG - Private Banks & Financial Institutions | DT.DOD.PCBK.CD | 2022 | Kenya  |          0 |  1097776462 |
+| External Debt - PPG - Total                                  | DT.DOD.DPPG.CD | 2022 | Kenya  | 6685750503 | 35037185972 |
