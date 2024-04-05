@@ -42,7 +42,7 @@ library(knitr)
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2fd064ab5d04.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file313e2bd80cfd.sqlite3
 ```
 
 ## perform extract
@@ -72,7 +72,7 @@ We can still perform the steps above at once
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2fd0361b7909.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file313e13dd4e4a.sqlite3
 
 idswb_ob %>% 
   # extract
@@ -88,6 +88,9 @@ idswb_ob %>%
 
 ## Querying data
 
+We can now query debt of a given country that it owes to both China and
+the World as follows using `get_debt()` function
+
 ``` r
 get_debt(debtor = "Kenya", by_year = 2022) %>% kable()
 ```
@@ -100,3 +103,16 @@ get_debt(debtor = "Kenya", by_year = 2022) %>% kable()
 | External Debt - PPG - Other Private Creditors                | DT.DOD.PROP.CD | 2022 | Kenya  |          0 |           0 |
 | External Debt - PPG - Private Banks & Financial Institutions | DT.DOD.PCBK.CD | 2022 | Kenya  |          0 |  1097776462 |
 | External Debt - PPG - Total                                  | DT.DOD.DPPG.CD | 2022 | Kenya  | 6685750503 | 35037185972 |
+
+``` r
+get_debt(debtor = "Nigeria", by_year = 2022) %>% kable()
+```
+
+| series                                                       | id             | year | debtor  |      China |       World |
+|:-------------------------------------------------------------|:---------------|:-----|:--------|-----------:|------------:|
+| External Debt - PPG - Bilateral                              | DT.DOD.BLAT.CD | 2022 | Nigeria | 4291730985 |  5169011908 |
+| External Debt - PPG - Bonds                                  | DT.DOD.PBND.CD | 2022 | Nigeria |          0 | 16364972000 |
+| External Debt - PPG - Multilateral                           | DT.DOD.MLAT.CD | 2022 | Nigeria |          0 | 16992036718 |
+| External Debt - PPG - Other Private Creditors                | DT.DOD.PROP.CD | 2022 | Nigeria |          0 |           0 |
+| External Debt - PPG - Private Banks & Financial Institutions | DT.DOD.PCBK.CD | 2022 | Nigeria |          0 |  1477698613 |
+| External Debt - PPG - Total                                  | DT.DOD.DPPG.CD | 2022 | Nigeria | 4291730985 | 40003719240 |

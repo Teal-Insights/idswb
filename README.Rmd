@@ -102,6 +102,8 @@ idswb_ob %>%
 
 ```
 ## Querying data
+
+We can now query debt of a given country that it owes to both China and the World as follows using `get_debt()` function
 ```{r}
 get_debt(debtor = "Kenya", by_year = 2022) %>% kable()
 ```
@@ -111,6 +113,6 @@ get_debt(debtor = "Kenya", by_year = 2022) %>% kable()
 ```
 
 ```{r}
-
+get_debt(debtor = "Nigeria", by_year = 2022) %>% kable()
 ```
 
