@@ -36,6 +36,74 @@ library(idswb)
 library(knitr)
 ```
 
+## Overview of available datasets in idswb package
+
+- ids: main information on debt
+
+``` r
+ids %>% head() %>% kable()
+```
+
+| ids_short_name                                | api_code       | data_last_updated | series_full_name                                                                                                                                                                                                                           | wb_debtor_country_name | wb_debtor_country_id | wb_creditor_name   | wb_creditor_id | year | ids_value |
+|:----------------------------------------------|:---------------|:------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-------------------|:---------------|:-----|----------:|
+| External Debt - PPG - Total                   | DT.DOD.DPPG.CD | 2024-02-29        | External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) |Afghanistan |AFG |Asian Dev. Bank    |915 |1970 | NA| |External Debt - PPG - Multilateral |DT.DOD.MLAT.CD |2024-02-29 |PPG, multilateral (DOD, current US$) | Afghanistan            | AFG                  | Asian Dev. Bank    | 915            | 1970 |        NA |
+| External Debt - PPG - Total                   | DT.DOD.DPPG.CD | 2024-02-29        | External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) |Afghanistan |AFG |Bulgaria |72 |1970 | NA| |External Debt - PPG - Bilateral |DT.DOD.BLAT.CD |2024-02-29 |PPG, bilateral (DOD, current US$)                  | Afghanistan            | AFG                  | Bulgaria           | 72             | 1970 |        NA |
+| External Debt - PPG - Other Private Creditors | DT.DOD.PROP.CD | 2024-02-29        | PPG, other private creditors (DOD, current US$) |Afghanistan |AFG |Croatia |62 |1970 | NA| |External Debt - PPG - Total |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)         | Afghanistan            | AFG                  | Croatia            | 62             | 1970 |        NA |
+
+- unique_counterpart_area: information on counterparts (creditors)
+
+``` r
+unique_counterpart_area %>% head() %>% kable()
+```
+
+| ids_counterpart_area_id | ids_counterpart_area_name |
+|:------------------------|:--------------------------|
+| 1                       | Austria                   |
+| 10                      | Sweden                    |
+| 11                      | Switzerland               |
+| 12                      | United Kingdom            |
+| 130                     | Algeria                   |
+| 133                     | Libya                     |
+
+- unique_country: information on debtors
+
+``` r
+unique_country %>% head() %>% kable()
+```
+
+| ids_country_id | ids_country_name |
+|:---------------|:-----------------|
+| AFG            | Afghanistan      |
+| ALB            | Albania          |
+| DZA            | Algeria          |
+| AGO            | Angola           |
+| ARG            | Argentina        |
+| ARM            | Armenia          |
+
+- unique_series: information on series
+
+``` r
+unique_series %>% head() %>% kable()
+```
+
+| ids_series_id     | ids_series_name                                                                                                                                                  |
+|:------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| BM.GSR.TOTL.CD    | Imports of goods, services and primary income (current US$) | |BN.CAB.XOKA.CD |Current account balance (current US$)                                             |
+| BX.GRT.EXTA.CD.DT | Grants, excluding technical cooperation (current US$) | |BX.GRT.TECH.CD.DT |Technical cooperation grants (current US$)                                           |
+| BX.GSR.TOTL.CD    | Exports of goods, services and primary income (current US$) | |BX.KLT.DINV.CD.DT |Foreign direct investment, net inflows in reporting economy (DRS, current US$) |
+
+- unique_time: information on years
+
+``` r
+unique_time %>% head() %>% kable()
+```
+
+| ids_time_id      | ids_time_name  |
+|:-----------------|:---------------|
+| YRwb_creditor_id | wb_creditor_id |
+| YRyear           | year           |
+| YRids_value      | ids_value      |
+
 ## creating an etl object
 
 We create an ETL object by specifying a string that defines the object’s
@@ -45,7 +113,7 @@ class, and use the package `idswb` to gain access to the relevant data.
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file329227a12cd6.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file3835abd5b34.sqlite3
 ```
 
 ## Extract
@@ -82,7 +150,7 @@ We can still perform the steps above at once
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file32924779abf.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file383524f50b55.sqlite3
 
 idswb_ob %>% 
   # extract

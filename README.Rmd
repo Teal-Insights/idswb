@@ -50,6 +50,51 @@ library(knitr)
 ```{r}
 
 ```
+## Overview of available datasets in idswb package
+
+* ids: main information on debt
+```{r}
+ids %>% head() %>% kable()
+```
+
+```{r}
+
+```
+
+* unique_counterpart_area: information on counterparts (creditors)  
+```{r}
+unique_counterpart_area %>% head() %>% kable()
+```
+
+```{r}
+
+```
+
+* unique_country: information on debtors     
+```{r}
+unique_country %>% head() %>% kable()
+```
+
+```{r}
+
+```
+* unique_series: information on series  
+```{r}
+unique_series %>% head() %>% kable()
+```
+
+```{r}
+
+```
+* unique_time: information on years                               
+
+```{r}
+unique_time %>% head() %>% kable()
+```
+
+```{r}
+
+```
 ## creating an etl object
 
 We create an ETL object by specifying a string that defines the object's class, and use the package `idswb` to gain access to the relevant data.
@@ -105,6 +150,10 @@ idswb_ob %>%
   etl_transform() %>% 
   # load
   etl_load()
+```
+
+```{r}
+
 ```
 
 ```{r}
