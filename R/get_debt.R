@@ -19,7 +19,7 @@ get_debt <- function(debtor,by_year = 2022){
       debtor = wb_debtor_country_name,
       creditor = wb_creditor_name,
       debt = ids_value) %>%
-    mutate(debt = ifelse(test = (is.na(debt)), yes = 0, no = debt)) %>%
+    dplyr::mutate(debt = ifelse(test = (is.na(debt)), yes = 0, no = debt)) %>%
     tidyr::spread(key = creditor, value = debt, fill = 0)
   # return results
   return(df_debt)
