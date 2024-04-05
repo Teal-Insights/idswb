@@ -101,9 +101,9 @@ idswb_ob %>%
 ```{r}
 
 ```
-
+## Querying data
 ```{r}
-
+get_debt(debtor = "Kenya", by_year = 2022)
 ```
 
 ```{r}

@@ -3,6 +3,7 @@
 S3method(etl_extract,etl_idswb)
 S3method(etl_load,etl_idswb)
 S3method(etl_transform,etl_idswb)
+export(get_debt)
 import(dplyr)
 import(etl)
 importFrom(DBI,dbWriteTable)
