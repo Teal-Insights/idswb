@@ -84,20 +84,221 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="overview-of-available-datasets-in-idswb-package">Overview of available datasets in idswb package<a class="anchor" aria-label="anchor" href="#overview-of-available-datasets-in-idswb-package"></a>
+</h2>
+<ul>
+<li>ids: main information on debt</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ids</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="11%">
+<col width="3%">
+<col width="4%">
+<col width="56%">
+<col width="5%">
+<col width="5%">
+<col width="4%">
+<col width="3%">
+<col width="1%">
+<col width="2%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">ids_short_name</th>
+<th align="left">api_code</th>
+<th align="left">data_last_updated</th>
+<th align="left">series_full_name</th>
+<th align="left">wb_debtor_country_name</th>
+<th align="left">wb_debtor_country_id</th>
+<th align="left">wb_creditor_name</th>
+<th align="left">wb_creditor_id</th>
+<th align="left">year</th>
+<th align="right">ids_value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">External Debt - PPG - Total</td>
+<td align="left">DT.DOD.DPPG.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">External debt stocks, public and publicly guaranteed (PPG) (DOD, current US<span class="math inline">)|<em>A</em><em>f</em><em>g</em><em>h</em><em>a</em><em>n</em><em>i</em><em>s</em><em>t</em><em>a</em><em>n</em>|<em>A</em><em>F</em><em>G</em>|<em>A</em><em>s</em><em>i</em><em>a</em><em>n</em><em>D</em><em>e</em><em>v</em>.<em>B</em><em>a</em><em>n</em><em>k</em>|915|1970|<em>N</em><em>A</em>||<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>D</em><em>e</em><em>b</em><em>t</em> − <em>P</em><em>P</em><em>G</em> − <em>M</em><em>u</em><em>l</em><em>t</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>|<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>M</em><em>L</em><em>A</em><em>T</em>.<em>C</em><em>D</em>|2024 − 02 − 29|<em>P</em><em>P</em><em>G</em>, <em>m</em><em>u</em><em>l</em><em>t</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
+<td align="left">Afghanistan</td>
+<td align="left">AFG</td>
+<td align="left">Asian Dev. Bank   </td>
+<td align="left">915</td>
+<td align="left">1970</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">External Debt - PPG - Total</td>
+<td align="left">DT.DOD.DPPG.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">External debt stocks, public and publicly guaranteed (PPG) (DOD, current US<span class="math inline">)|<em>A</em><em>f</em><em>g</em><em>h</em><em>a</em><em>n</em><em>i</em><em>s</em><em>t</em><em>a</em><em>n</em>|<em>A</em><em>F</em><em>G</em>|<em>B</em><em>u</em><em>l</em><em>g</em><em>a</em><em>r</em><em>i</em><em>a</em>|72|1970|<em>N</em><em>A</em>||<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>D</em><em>e</em><em>b</em><em>t</em> − <em>P</em><em>P</em><em>G</em> − <em>B</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>|<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>B</em><em>L</em><em>A</em><em>T</em>.<em>C</em><em>D</em>|2024 − 02 − 29|<em>P</em><em>P</em><em>G</em>, <em>b</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
+<td align="left">Afghanistan</td>
+<td align="left">AFG</td>
+<td align="left">Bulgaria</td>
+<td align="left">72</td>
+<td align="left">1970</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">External Debt - PPG - Other Private Creditors</td>
+<td align="left">DT.DOD.PROP.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, other private creditors (DOD, current US<span class="math inline">)|<em>A</em><em>f</em><em>g</em><em>h</em><em>a</em><em>n</em><em>i</em><em>s</em><em>t</em><em>a</em><em>n</em>|<em>A</em><em>F</em><em>G</em>|<em>C</em><em>r</em><em>o</em><em>a</em><em>t</em><em>i</em><em>a</em>|62|1970|<em>N</em><em>A</em>||<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>D</em><em>e</em><em>b</em><em>t</em> − <em>P</em><em>P</em><em>G</em> − <em>T</em><em>o</em><em>t</em><em>a</em><em>l</em>|<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>D</em><em>P</em><em>P</em><em>G</em>.<em>C</em><em>D</em>|2024 − 02 − 29|<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>d</em><em>e</em><em>b</em><em>t</em><em>s</em><em>t</em><em>o</em><em>c</em><em>k</em><em>s</em>, <em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>a</em><em>n</em><em>d</em><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>l</em><em>y</em><em>g</em><em>u</em><em>a</em><em>r</em><em>a</em><em>n</em><em>t</em><em>e</em><em>e</em><em>d</em>(<em>P</em><em>P</em><em>G</em>)(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
+<td align="left">Afghanistan</td>
+<td align="left">AFG</td>
+<td align="left">Croatia</td>
+<td align="left">62</td>
+<td align="left">1970</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>unique_counterpart_area: information on counterparts (creditors)</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">unique_counterpart_area</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">ids_counterpart_area_id</th>
+<th align="left">ids_counterpart_area_name</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Austria</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">Sweden</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="left">Switzerland</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">United Kingdom</td>
+</tr>
+<tr class="odd">
+<td align="left">130</td>
+<td align="left">Algeria</td>
+</tr>
+<tr class="even">
+<td align="left">133</td>
+<td align="left">Libya</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>unique_country: information on debtors</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">unique_country</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">ids_country_id</th>
+<th align="left">ids_country_name</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">AFG</td>
+<td align="left">Afghanistan</td>
+</tr>
+<tr class="even">
+<td align="left">ALB</td>
+<td align="left">Albania</td>
+</tr>
+<tr class="odd">
+<td align="left">DZA</td>
+<td align="left">Algeria</td>
+</tr>
+<tr class="even">
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+</tr>
+<tr class="odd">
+<td align="left">ARG</td>
+<td align="left">Argentina</td>
+</tr>
+<tr class="even">
+<td align="left">ARM</td>
+<td align="left">Armenia</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>unique_series: information on series</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">unique_series</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="10%">
+<col width="89%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">ids_series_id</th>
+<th align="left">ids_series_name</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">BM.GSR.TOTL.CD</td>
+<td align="left">Imports of goods, services and primary income (current US<span class="math inline">)||<em>B</em><em>N</em>.<em>C</em><em>A</em><em>B</em>.<em>X</em><em>O</em><em>K</em><em>A</em>.<em>C</em><em>D</em>|<em>C</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>a</em><em>c</em><em>c</em><em>o</em><em>u</em><em>n</em><em>t</em><em>b</em><em>a</em><em>l</em><em>a</em><em>n</em><em>c</em><em>e</em>(<em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
+</tr>
+<tr class="even">
+<td align="left">BX.GRT.EXTA.CD.DT</td>
+<td align="left">Grants, excluding technical cooperation (current US<span class="math inline">)||<em>B</em><em>X</em>.<em>G</em><em>R</em><em>T</em>.<em>T</em><em>E</em><em>C</em><em>H</em>.<em>C</em><em>D</em>.<em>D</em><em>T</em>|<em>T</em><em>e</em><em>c</em><em>h</em><em>n</em><em>i</em><em>c</em><em>a</em><em>l</em><em>c</em><em>o</em><em>o</em><em>p</em><em>e</em><em>r</em><em>a</em><em>t</em><em>i</em><em>o</em><em>n</em><em>g</em><em>r</em><em>a</em><em>n</em><em>t</em><em>s</em>(<em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
+</tr>
+<tr class="odd">
+<td align="left">BX.GSR.TOTL.CD</td>
+<td align="left">Exports of goods, services and primary income (current US<span class="math inline">)||<em>B</em><em>X</em>.<em>K</em><em>L</em><em>T</em>.<em>D</em><em>I</em><em>N</em><em>V</em>.<em>C</em><em>D</em>.<em>D</em><em>T</em>|<em>F</em><em>o</em><em>r</em><em>e</em><em>i</em><em>g</em><em>n</em><em>d</em><em>i</em><em>r</em><em>e</em><em>c</em><em>t</em><em>i</em><em>n</em><em>v</em><em>e</em><em>s</em><em>t</em><em>m</em><em>e</em><em>n</em><em>t</em>, <em>n</em><em>e</em><em>t</em><em>i</em><em>n</em><em>f</em><em>l</em><em>o</em><em>w</em><em>s</em><em>i</em><em>n</em><em>r</em><em>e</em><em>p</em><em>o</em><em>r</em><em>t</em><em>i</em><em>n</em><em>g</em><em>e</em><em>c</em><em>o</em><em>n</em><em>o</em><em>m</em><em>y</em>(<em>D</em><em>R</em><em>S</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>unique_time: information on years</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">unique_time</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">ids_time_id</th>
+<th align="left">ids_time_name</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">YRwb_creditor_id</td>
+<td align="left">wb_creditor_id</td>
+</tr>
+<tr class="even">
+<td align="left">YRyear</td>
+<td align="left">year</td>
+</tr>
+<tr class="odd">
+<td align="left">YRids_value</td>
+<td align="left">ids_value</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
 <h2 id="creating-an-etl-object">creating an etl object<a class="anchor" aria-label="anchor" href="#creating-an-etl-object"></a>
 </h2>
 <p>We create an ETL object by specifying a string that defines the object’s class, and use the package <code>idswb</code> to gain access to the relevant data.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ceating an object</span></span>
 <span><span class="va">idswb_ob</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl.html" class="external-link">etl</a></span><span class="op">(</span><span class="st">"idswb"</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; No database was specified so I created one for you at:</span></span>
-<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file329227a12cd6.sqlite3</span></span></code></pre></div>
+<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file3835abd5b34.sqlite3</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="extract">Extract<a class="anchor" aria-label="anchor" href="#extract"></a>
 </h2>
 <p>The first step here is to acquire data</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_extract</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Extracting raw data...</span></span></code></pre></div>
 </div>
@@ -105,7 +306,7 @@
 <h2 id="transform">Transform<a class="anchor" aria-label="anchor" href="#transform"></a>
 </h2>
 <p>This data might require conversion from its original format into files that are appropriate for SQL import, typically in CSV format.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_transform</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Transforming raw data ...</span></span></code></pre></div>
 </div>
@@ -113,15 +314,15 @@
 <h2 id="load">Load<a class="anchor" aria-label="anchor" href="#load"></a>
 </h2>
 <p>Fill the SQL database with the processed data.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_load</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading data to the database...</span></span></code></pre></div>
 <p>We can still perform the steps above at once</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ceating an object</span></span>
 <span><span class="va">idswb_ob</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl.html" class="external-link">etl</a></span><span class="op">(</span><span class="st">"idswb"</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; No database was specified so I created one for you at:</span></span>
-<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file32924779abf.sqlite3</span></span>
+<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file383524f50b55.sqlite3</span></span>
 <span></span>
 <span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="co"># extract</span></span>
@@ -138,7 +339,7 @@
 <h2 id="querying-data">Querying data<a class="anchor" aria-label="anchor" href="#querying-data"></a>
 </h2>
 <p>We can now query debt of a given country that it owes to both China and the World as follows using <code><a href="reference/get_debt.html">get_debt()</a></code> function</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_debt.html">get_debt</a></span><span class="op">(</span>debtor <span class="op">=</span> <span class="st">"Kenya"</span>, by_year <span class="op">=</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -208,7 +409,7 @@
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_debt.html">get_debt</a></span><span class="op">(</span>debtor <span class="op">=</span> <span class="st">"Nigeria"</span>, by_year <span class="op">=</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
