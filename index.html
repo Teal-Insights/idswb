@@ -86,29 +86,33 @@
 <div class="section level2">
 <h2 id="creating-an-etl-object">creating an etl object<a class="anchor" aria-label="anchor" href="#creating-an-etl-object"></a>
 </h2>
+<p>We create an ETL object by specifying a string that defines the object’s class, and use the package <code>idswb</code> to gain access to the relevant data.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ceating an object</span></span>
 <span><span class="va">idswb_ob</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl.html" class="external-link">etl</a></span><span class="op">(</span><span class="st">"idswb"</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; No database was specified so I created one for you at:</span></span>
-<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file313e2bd80cfd.sqlite3</span></span></code></pre></div>
+<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file329227a12cd6.sqlite3</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="perform-extract">perform extract<a class="anchor" aria-label="anchor" href="#perform-extract"></a>
+<h2 id="extract">Extract<a class="anchor" aria-label="anchor" href="#extract"></a>
 </h2>
+<p>The first step here is to acquire data</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_extract</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Extracting raw data...</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="perform-transform">perform transform<a class="anchor" aria-label="anchor" href="#perform-transform"></a>
+<h2 id="transform">Transform<a class="anchor" aria-label="anchor" href="#transform"></a>
 </h2>
+<p>This data might require conversion from its original format into files that are appropriate for SQL import, typically in CSV format.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_transform</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Transforming raw data ...</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="perform-load">perform load<a class="anchor" aria-label="anchor" href="#perform-load"></a>
+<h2 id="load">Load<a class="anchor" aria-label="anchor" href="#load"></a>
 </h2>
+<p>Fill the SQL database with the processed data.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_load</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading data to the database...</span></span></code></pre></div>
@@ -117,7 +121,7 @@
 <code class="sourceCode R"><span><span class="co"># ceating an object</span></span>
 <span><span class="va">idswb_ob</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl.html" class="external-link">etl</a></span><span class="op">(</span><span class="st">"idswb"</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; No database was specified so I created one for you at:</span></span>
-<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file313e13dd4e4a.sqlite3</span></span>
+<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file32924779abf.sqlite3</span></span>
 <span></span>
 <span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="co"># extract</span></span>
