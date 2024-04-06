@@ -41,6 +41,6 @@ hexSticker::sticker(
   filename = "inst/logo/inst_logo.png"
 )
 
-# usethis::use_logo("inst/logo/inst_logo.png")
+usethis::use_logo("inst/logo/inst_logo.png")
 
 # End: --------------------------------------------------------------------
