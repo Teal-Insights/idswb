@@ -1,14 +1,14 @@
 
-#' etl_transform
+#' Prepares raw data to be loaded into a database
+#'
+#' Manipulate the raw data such that it can be loaded into a database table. Usually
+#' this means converting the raw data to (a series of) CSV files, which are also stored locally
+#'
+#' @param obj An etl object
+#' @param ... arguments passed to methods
+#'
+#' @return Populates load directory with data
 #' @export
-#' @rdname etl_extract.etl_idswb
-#' @method etl_transform etl_idswb
-#' @import dplyr
-#' @import etl
-#' @importFrom readr write_delim read_csv
-#' @importFrom lubridate year month
-#' @inheritParams etl::etl_extract
-#' @details This function transforms International Debt statistics data for years and months specified.
 #'
 etl_transform.etl_idswb <- function(obj, ...) {
   # pop up message to start

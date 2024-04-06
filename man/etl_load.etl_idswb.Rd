@@ -11,6 +11,9 @@
 
 \item{...}{arguments passed to methods}
 }
+\value{
+Loads data from load directory into database
+}
 \description{
 Load the transformed data into the database.
 }

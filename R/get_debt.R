@@ -1,13 +1,14 @@
 
 #' Gets debt information for a given country that it owes to both China and the World
 #'
+#' This function extract a tibble showing how a debtor owes to both China and the World
+#'
 #' @param debtor Country of interest
 #' @param by_year Year of interest
 #'
-#' @return
+#' @return Returns a tibble showing how debtor owes to both China and the World
 #' @export
 #'
-#' @examples
 get_debt <- function(debtor,by_year = 2022){
   df_debt <- idswb::ids %>%
     # mutate(year = as.integer(year)) %>%

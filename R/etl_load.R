@@ -4,7 +4,7 @@
 #' @param obj An etl object
 #' @param ... arguments passed to methods
 #'
-#' @return
+#' @return Loads data from load directory into database
 #' @export
 #'
 etl_load.etl_idswb <- function(obj, ...) {

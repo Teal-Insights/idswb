@@ -1,16 +1,11 @@
-#' etl_extract
-#' @rdname etl_extract.etl_idswb
-#' @method etl_extract etl_idswb
-#' @import etl
-#' @import dplyr
-#' @importFrom rvest html_nodes html_text
-#' @importFrom xml2 read_html
-#' @importFrom utils download.file
-#' @importFrom lubridate year month days parse_date_time
-#' @inheritParams etl::etl_extract
-#' @details This function downloads International Debt statistics data
-#' in the raw directory under the folder the user created
+#' Extract data from the Internet and store it locally in its raw form
+#'
+#' @param obj An etl object
+#' @param ... arguments passed to methods
+#'
+#' @return Populates raw directory with data
 #' @export
+#'
 etl_extract.etl_idswb <- function(obj, ...) {
   message("Extracting raw data...")
 
