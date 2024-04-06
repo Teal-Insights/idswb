@@ -2,18 +2,15 @@
 % Please edit documentation in R/etl_extract.R
 \name{etl_extract.etl_idswb}
 \alias{etl_extract.etl_idswb}
-\title{Extract data from the Internet and store it locally in its raw form}
+\title{Extracts data and stores it locally in its raw form}
 \usage{
 \method{etl_extract}{etl_idswb}(obj, ...)
 }
 \arguments{
-\item{obj}{An etl object}
+\item{obj}{an etl object}
 
 \item{...}{arguments passed to methods}
 }
-\value{
-Populates raw directory with data
-}
 \description{
-Extract data from the Internet and store it locally in its raw form
+Downloads data and stores it locally in its raw form
 }

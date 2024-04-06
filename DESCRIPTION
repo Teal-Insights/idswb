@@ -14,14 +14,9 @@ Depends:
 Imports:
     DBI,
     dplyr,
-    lubridate,
-    methods,
     readr,
-    readxl,
-    rvest,
     stringr,
-    tidyr,
-    xml2
+    tidyr
 Suggests:
     knitr,
     magrittr,

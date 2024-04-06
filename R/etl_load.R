@@ -1,12 +1,13 @@
 
+#' @title Load the transformed data into the database.
+#' @description
 #' Load the transformed data into the database.
-#'
 #' @param obj An etl object
 #' @param ... arguments passed to methods
+#' @method etl_load etl_idswb
 #'
 #' @return Loads data from load directory into database
 #' @export
-#'
 etl_load.etl_idswb <- function(obj, ...) {
   path = list.files(path = file.path(attr(obj, "load_dir")), pattern = "\\.csv", full.names = TRUE)
   table = list.files(path = file.path(attr(obj, "load_dir")), pattern = "\\.csv") %>% stringr::str_remove(pattern = ".csv")

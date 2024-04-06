@@ -1,11 +1,13 @@
-#' Extract data from the Internet and store it locally in its raw form
-#'
-#' @param obj An etl object
+#' @title Extracts data and stores it locally in its raw form
+#' @description
+#' Downloads data and stores it locally in its raw form
+#' @rdname etl_extract.etl_idswb
+#' @method etl_extract etl_idswb
+#' @import etl
+#' @import dplyr
+#' @param obj an etl object
 #' @param ... arguments passed to methods
-#'
-#' @return Populates raw directory with data
 #' @export
-#'
 etl_extract.etl_idswb <- function(obj, ...) {
   message("Extracting raw data...")
 

@@ -1,3 +1,5 @@
+utils::globalVariables(c("wb_debtor_country_name", "wb_creditor_name", "year","ids_short_name",
+                         "api_code","ids_value","debt","creditor"))
 
 #' Gets debt information for a given country that it owes to both China and the World
 #'

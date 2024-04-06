@@ -1,4 +1,6 @@
 
+#' @title Prepares raw data to be loaded into a database
+#' @description
 #' Prepares raw data to be loaded into a database
 #'
 #' Manipulate the raw data such that it can be loaded into a database table. Usually
@@ -6,10 +8,10 @@
 #'
 #' @param obj An etl object
 #' @param ... arguments passed to methods
+#' @method etl_transform etl_idswb
 #'
 #' @return Populates load directory with data
 #' @export
-#'
 etl_transform.etl_idswb <- function(obj, ...) {
   # pop up message to start
   message("Transforming raw data ...")

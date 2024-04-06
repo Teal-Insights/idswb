@@ -15,6 +15,8 @@
 Populates load directory with data
 }
 \description{
+Prepares raw data to be loaded into a database
+
 Manipulate the raw data such that it can be loaded into a database table. Usually
 this means converting the raw data to (a series of) CSV files, which are also stored locally
 }
