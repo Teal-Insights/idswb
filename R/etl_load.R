@@ -1,31 +1,12 @@
-#' etl_load
+
+#' Load the transformed data into the database.
+#'
+#' @param obj An etl object
+#' @param ... arguments passed to methods
+#'
+#' @return
 #' @export
-#' @rdname etl_extract.etl_idswb
-#' @method etl_load etl_idswb
-#' @import dplyr
-#' @import etl
-#' @importFrom DBI dbWriteTable
-#' @importFrom lubridate year month
-#' @inheritParams etl::etl_extract
-#' @details This function loads International Debt statistics data into a local database.
-#' @examples
-#' \dontrun{
-#' calls <- etl("idswb")
-#' calls %>%
-#'  etl_extract()
 #'
-#' calls %>%
-#'   etl_init() %>%
-#'   etl_update()
-#'
-#' calls %>%
-#'   tbl("calls") %>%
-#'   glimpse()
-#'
-#' calls_df <- calls %>%
-#'   tbl("calls") %>%
-#'   collect()
-#' }
 etl_load.etl_idswb <- function(obj, ...) {
   path = list.files(path = file.path(attr(obj, "load_dir")), pattern = "\\.csv", full.names = TRUE)
   table = list.files(path = file.path(attr(obj, "load_dir")), pattern = "\\.csv") %>% stringr::str_remove(pattern = ".csv")
