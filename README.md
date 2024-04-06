@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# idswb
+# idswb <a href="https://teal-insights.github.io/idswb/"><img src="man/figures/logo.png" align="right" height="139" alt="idswb website" /></a>
 
 <!-- badges: start -->
 
@@ -124,7 +124,7 @@ class, and use the package `idswb` to gain access to the relevant data.
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/filede57a0d26b3.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file151167e5cd8e.sqlite3
 ```
 
 ## Extract
@@ -161,7 +161,7 @@ We can still perform the steps above at once
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/filede5c5db5e2.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file15117a3fa8e6.sqlite3
 
 idswb_ob %>% 
   # extract
