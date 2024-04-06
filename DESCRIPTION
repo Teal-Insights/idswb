@@ -12,12 +12,16 @@ Depends:
     R (>= 3.5),
     etl
 Imports:
-    DBI, 
+    DBI,
     dplyr,
+    lubridate,
     methods,
     readr,
     readxl,
-    tidyr
+    rvest,
+    stringr,
+    tidyr,
+    xml2
 Suggests:
     knitr,
     magrittr,
@@ -31,4 +35,5 @@ RoxygenNote: 7.3.1
 URL: http://github.com/Teal-Insights/idswb, https://teal-insights.github.io/idswb/
 BugReports: https://github.com/Teal-Insights/idswb/issues
 LazyData: true
+LazyDataCompression: xz
 Config/testthat/edition: 3
