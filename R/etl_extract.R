@@ -12,7 +12,7 @@ etl_extract.etl_idswb <- function(obj, ...) {
   message("Extracting raw data...")
 
   # loading data
-  df_full = idswb::ids
+  df_full = dplyr::bind_rows(idswb::ids_one, idswb::ids_two)
   unique_counterpart_area <- idswb::unique_counterpart_area
   unique_country <- idswb::unique_country
   unique_series <- idswb::unique_series
