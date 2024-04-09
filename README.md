@@ -113,7 +113,7 @@ class, and use the package `idswb` to gain access to the relevant data.
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file261931e23274.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2ae02064952f.sqlite3
 ```
 
 ## Extract
@@ -162,7 +162,9 @@ idswb_ob %>%
 ## Querying data
 
 We can now query debt of a given country that it owes to both China and
-the World as follows using `get_debt()` function
+the World as follows
+
+`Query 1:`
 
 ``` r
 dplyr::tbl(idswb_ob, "ids_wb") %>% 
@@ -191,6 +193,8 @@ dplyr::tbl(idswb_ob, "ids_wb") %>%
 | DT.DOD.PCBK.CD | 2024-02-29        | PPG, commercial banks (DOD, current US$) |Kenya |KEN |World |WLD |2022 | 1097776462| |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) | Kenya                  | KEN                  | World            | WLD            | 2022 | 35037185972 |
 | DT.DOD.PBND.CD | 2024-02-29        | PPG, bonds (DOD, current US$) |Kenya |KEN |World |WLD |2022 | 7100000000| |DT.DOD.PROP.CD |2024-02-29 |PPG, other private creditors (DOD, current US$)                                          | Kenya                  | KEN                  | World            | WLD            | 2022 |          NA |
 | DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US\$)                                                                                                                                                              | Kenya                  | KEN                  | World            | WLD            | 2022 | 10119631310 |
+
+`Query 2:`
 
 ``` r
 dplyr::tbl(idswb_ob, "ids_wb") %>% 

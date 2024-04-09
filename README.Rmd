@@ -163,7 +163,9 @@ idswb_ob %>%
 ```
 ## Querying data
 
-We can now query debt of a given country that it owes to both China and the World as follows using `get_debt()` function
+We can now query debt of a given country that it owes to both China and the World as follows
+
+`Query 1:`
 ```{r}
 dplyr::tbl(idswb_ob, "ids_wb") %>% 
   # query data
@@ -187,7 +189,7 @@ dplyr::tbl(idswb_ob, "ids_wb") %>%
 ```{r}
 
 ```
-
+`Query 2:`
 ```{r}
 dplyr::tbl(idswb_ob, "ids_wb") %>% 
   # query data
