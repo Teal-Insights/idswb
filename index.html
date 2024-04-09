@@ -91,84 +91,16 @@
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/Teal-Insights/idswb" class="external-link">idswb</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="overview-of-available-datasets-in-idswb-package">Overview of available datasets in idswb package<a class="anchor" aria-label="anchor" href="#overview-of-available-datasets-in-idswb-package"></a>
 </h2>
 <ul>
-<li>ids: main information on debt</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ids</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
-<colgroup>
-<col width="11%">
-<col width="3%">
-<col width="4%">
-<col width="56%">
-<col width="5%">
-<col width="5%">
-<col width="4%">
-<col width="3%">
-<col width="1%">
-<col width="2%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">ids_short_name</th>
-<th align="left">api_code</th>
-<th align="left">data_last_updated</th>
-<th align="left">series_full_name</th>
-<th align="left">wb_debtor_country_name</th>
-<th align="left">wb_debtor_country_id</th>
-<th align="left">wb_creditor_name</th>
-<th align="left">wb_creditor_id</th>
-<th align="left">year</th>
-<th align="right">ids_value</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">External Debt - PPG - Total</td>
-<td align="left">DT.DOD.DPPG.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">External debt stocks, public and publicly guaranteed (PPG) (DOD, current US<span class="math inline">)|<em>A</em><em>f</em><em>g</em><em>h</em><em>a</em><em>n</em><em>i</em><em>s</em><em>t</em><em>a</em><em>n</em>|<em>A</em><em>F</em><em>G</em>|<em>A</em><em>s</em><em>i</em><em>a</em><em>n</em><em>D</em><em>e</em><em>v</em>.<em>B</em><em>a</em><em>n</em><em>k</em>|915|1970|<em>N</em><em>A</em>||<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>D</em><em>e</em><em>b</em><em>t</em> − <em>P</em><em>P</em><em>G</em> − <em>M</em><em>u</em><em>l</em><em>t</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>|<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>M</em><em>L</em><em>A</em><em>T</em>.<em>C</em><em>D</em>|2024 − 02 − 29|<em>P</em><em>P</em><em>G</em>, <em>m</em><em>u</em><em>l</em><em>t</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Afghanistan</td>
-<td align="left">AFG</td>
-<td align="left">Asian Dev. Bank   </td>
-<td align="left">915</td>
-<td align="left">1970</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">External Debt - PPG - Total</td>
-<td align="left">DT.DOD.DPPG.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">External debt stocks, public and publicly guaranteed (PPG) (DOD, current US<span class="math inline">)|<em>A</em><em>f</em><em>g</em><em>h</em><em>a</em><em>n</em><em>i</em><em>s</em><em>t</em><em>a</em><em>n</em>|<em>A</em><em>F</em><em>G</em>|<em>B</em><em>u</em><em>l</em><em>g</em><em>a</em><em>r</em><em>i</em><em>a</em>|72|1970|<em>N</em><em>A</em>||<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>D</em><em>e</em><em>b</em><em>t</em> − <em>P</em><em>P</em><em>G</em> − <em>B</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>|<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>B</em><em>L</em><em>A</em><em>T</em>.<em>C</em><em>D</em>|2024 − 02 − 29|<em>P</em><em>P</em><em>G</em>, <em>b</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Afghanistan</td>
-<td align="left">AFG</td>
-<td align="left">Bulgaria</td>
-<td align="left">72</td>
-<td align="left">1970</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">External Debt - PPG - Other Private Creditors</td>
-<td align="left">DT.DOD.PROP.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, other private creditors (DOD, current US<span class="math inline">)|<em>A</em><em>f</em><em>g</em><em>h</em><em>a</em><em>n</em><em>i</em><em>s</em><em>t</em><em>a</em><em>n</em>|<em>A</em><em>F</em><em>G</em>|<em>C</em><em>r</em><em>o</em><em>a</em><em>t</em><em>i</em><em>a</em>|62|1970|<em>N</em><em>A</em>||<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>D</em><em>e</em><em>b</em><em>t</em> − <em>P</em><em>P</em><em>G</em> − <em>T</em><em>o</em><em>t</em><em>a</em><em>l</em>|<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>D</em><em>P</em><em>P</em><em>G</em>.<em>C</em><em>D</em>|2024 − 02 − 29|<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>d</em><em>e</em><em>b</em><em>t</em><em>s</em><em>t</em><em>o</em><em>c</em><em>k</em><em>s</em>, <em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>a</em><em>n</em><em>d</em><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>l</em><em>y</em><em>g</em><em>u</em><em>a</em><em>r</em><em>a</em><em>n</em><em>t</em><em>e</em><em>e</em><em>d</em>(<em>P</em><em>P</em><em>G</em>)(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Afghanistan</td>
-<td align="left">AFG</td>
-<td align="left">Croatia</td>
-<td align="left">62</td>
-<td align="left">1970</td>
-<td align="right">NA</td>
-</tr>
-</tbody>
-</table>
-<ul>
 <li>unique_counterpart_area: information on counterparts (creditors)</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">unique_counterpart_area</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -205,7 +137,7 @@
 <ul>
 <li>unique_country: information on debtors</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">unique_country</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -242,7 +174,7 @@
 <ul>
 <li>unique_series: information on series</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">unique_series</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -271,7 +203,7 @@
 <ul>
 <li>unique_time: information on years</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">unique_time</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -310,17 +242,17 @@
 <h2 id="creating-an-etl-object">creating an etl object<a class="anchor" aria-label="anchor" href="#creating-an-etl-object"></a>
 </h2>
 <p>We create an ETL object by specifying a string that defines the object’s class, and use the package <code>idswb</code> to gain access to the relevant data.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ceating an object</span></span>
 <span><span class="va">idswb_ob</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl.html" class="external-link">etl</a></span><span class="op">(</span><span class="st">"idswb"</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; No database was specified so I created one for you at:</span></span>
-<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file151167e5cd8e.sqlite3</span></span></code></pre></div>
+<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file261931e23274.sqlite3</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="extract">Extract<a class="anchor" aria-label="anchor" href="#extract"></a>
 </h2>
 <p>The first step here is to acquire data</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_extract</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Extracting raw data...</span></span></code></pre></div>
 </div>
@@ -328,7 +260,7 @@
 <h2 id="transform">Transform<a class="anchor" aria-label="anchor" href="#transform"></a>
 </h2>
 <p>This data might require conversion from its original format into files that are appropriate for SQL import, typically in CSV format.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_transform</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Transforming raw data ...</span></span></code></pre></div>
 </div>
@@ -336,15 +268,13 @@
 <h2 id="load">Load<a class="anchor" aria-label="anchor" href="#load"></a>
 </h2>
 <p>Fill the SQL database with the processed data.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_load</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading data to the database...</span></span></code></pre></div>
 <p>We can still perform the steps above at once</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ceating an object</span></span>
 <span><span class="va">idswb_ob</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl.html" class="external-link">etl</a></span><span class="op">(</span><span class="st">"idswb"</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; No database was specified so I created one for you at:</span></span>
-<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file15117a3fa8e6.sqlite3</span></span>
 <span></span>
 <span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="co"># extract</span></span>
@@ -352,152 +282,207 @@
 <span>  <span class="co"># transform</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_transform</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="co"># load</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_load</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Extracting raw data...</span></span>
-<span><span class="co">#&gt; Transforming raw data ...</span></span>
-<span><span class="co">#&gt; Loading data to the database...</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_load</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="querying-data">Querying data<a class="anchor" aria-label="anchor" href="#querying-data"></a>
 </h2>
 <p>We can now query debt of a given country that it owes to both China and the World as follows using <code><a href="reference/get_debt.html">get_debt()</a></code> function</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/get_debt.html">get_debt</a></span><span class="op">(</span>debtor <span class="op">=</span> <span class="st">"Kenya"</span>, by_year <span class="op">=</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">idswb_ob</span>, <span class="st">"ids_wb"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="co"># query data</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">wb_debtor_country_name</span> <span class="op">==</span> <span class="st">"Kenya"</span>,</span>
+<span>         <span class="va">wb_creditor_name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"China"</span>,<span class="st">"World"</span><span class="op">)</span>,</span>
+<span>         <span class="va">api_code</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DT.DOD.BLAT.CD"</span>,</span>
+<span>                         <span class="st">"DT.DOD.PBND.CD"</span>,</span>
+<span>                         <span class="st">'DT.DOD.MLAT.CD'</span>,</span>
+<span>                         <span class="st">"DT.DOD.PROP.CD"</span>,</span>
+<span>                         <span class="st">"DT.DOD.PCBK.CD"</span>,</span>
+<span>                         <span class="st">"DT.DOD.DPPG.CD"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html" class="external-link">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="co"># gather data</span></span>
+<span>  <span class="fu">gather</span><span class="op">(</span>key <span class="op">=</span> <span class="va">year</span>,value <span class="op">=</span> <span class="va">debt</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">api_code</span>, <span class="va">data_last_updated</span>, <span class="va">series_full_name</span>, <span class="va">wb_debtor_country_name</span>, <span class="va">wb_debtor_country_id</span>,  </span>
+<span>                                    <span class="va">wb_creditor_name</span>, <span class="va">wb_creditor_id</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>data_last_updated <span class="op">=</span> <span class="fu">as_datetime</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">data_last_updated</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="52%">
-<col width="13%">
+<col width="4%">
 <col width="5%">
+<col width="59%">
+<col width="7%">
 <col width="6%">
-<col width="10%">
-<col width="11%">
+<col width="5%">
+<col width="4%">
+<col width="1%">
+<col width="3%">
 </colgroup>
 <thead><tr class="header">
-<th align="left">series</th>
-<th align="left">id</th>
+<th align="left">api_code</th>
+<th align="left">data_last_updated</th>
+<th align="left">series_full_name</th>
+<th align="left">wb_debtor_country_name</th>
+<th align="left">wb_debtor_country_id</th>
+<th align="left">wb_creditor_name</th>
+<th align="left">wb_creditor_id</th>
 <th align="left">year</th>
-<th align="left">debtor</th>
-<th align="right">China</th>
-<th align="right">World</th>
+<th align="right">debt</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">External Debt - PPG - Bilateral</td>
 <td align="left">DT.DOD.BLAT.CD</td>
-<td align="left">2022</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, bilateral (DOD, current US<span class="math inline">)|<em>K</em><em>e</em><em>n</em><em>y</em><em>a</em>|<em>K</em><em>E</em><em>N</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|6685750503||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>D</em><em>P</em><em>P</em><em>G</em>.<em>C</em><em>D</em>|2024−02−29|<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>d</em><em>e</em><em>b</em><em>t</em><em>s</em><em>t</em><em>o</em><em>c</em><em>k</em><em>s</em>, <em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>a</em><em>n</em><em>d</em><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>l</em><em>y</em><em>g</em><em>u</em><em>a</em><em>r</em><em>a</em><em>n</em><em>t</em><em>e</em><em>e</em><em>d</em>(<em>P</em><em>P</em><em>G</em>)(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
 <td align="left">Kenya</td>
+<td align="left">KEN</td>
+<td align="left">China</td>
+<td align="left">730</td>
+<td align="left">2022</td>
 <td align="right">6685750503</td>
-<td align="right">10119631310</td>
 </tr>
 <tr class="even">
-<td align="left">External Debt - PPG - Bonds</td>
-<td align="left">DT.DOD.PBND.CD</td>
-<td align="left">2022</td>
+<td align="left">DT.DOD.PROP.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, other private creditors (DOD, current US<span class="math inline">)|<em>K</em><em>e</em><em>n</em><em>y</em><em>a</em>|<em>K</em><em>E</em><em>N</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|<em>N</em><em>A</em>||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>M</em><em>L</em><em>A</em><em>T</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>m</em><em>u</em><em>l</em><em>t</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
 <td align="left">Kenya</td>
-<td align="right">0</td>
-<td align="right">7100000000</td>
-</tr>
-<tr class="odd">
-<td align="left">External Debt - PPG - Multilateral</td>
-<td align="left">DT.DOD.MLAT.CD</td>
+<td align="left">KEN</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
 <td align="left">2022</td>
-<td align="left">Kenya</td>
-<td align="right">0</td>
 <td align="right">16719778200</td>
 </tr>
-<tr class="even">
-<td align="left">External Debt - PPG - Other Private Creditors</td>
-<td align="left">DT.DOD.PROP.CD</td>
-<td align="left">2022</td>
+<tr class="odd">
+<td align="left">DT.DOD.PCBK.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, commercial banks (DOD, current US<span class="math inline">)|<em>K</em><em>e</em><em>n</em><em>y</em><em>a</em>|<em>K</em><em>E</em><em>N</em>|<em>W</em><em>o</em><em>r</em><em>l</em><em>d</em>|<em>W</em><em>L</em><em>D</em>|2022|1097776462||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>D</em><em>P</em><em>P</em><em>G</em>.<em>C</em><em>D</em>|2024−02−29|<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>d</em><em>e</em><em>b</em><em>t</em><em>s</em><em>t</em><em>o</em><em>c</em><em>k</em><em>s</em>, <em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>a</em><em>n</em><em>d</em><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>l</em><em>y</em><em>g</em><em>u</em><em>a</em><em>r</em><em>a</em><em>n</em><em>t</em><em>e</em><em>e</em><em>d</em>(<em>P</em><em>P</em><em>G</em>)(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
 <td align="left">Kenya</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="left">KEN</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
+<td align="left">2022</td>
+<td align="right">35037185972</td>
+</tr>
+<tr class="even">
+<td align="left">DT.DOD.PBND.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, bonds (DOD, current US<span class="math inline">)|<em>K</em><em>e</em><em>n</em><em>y</em><em>a</em>|<em>K</em><em>E</em><em>N</em>|<em>W</em><em>o</em><em>r</em><em>l</em><em>d</em>|<em>W</em><em>L</em><em>D</em>|2022|7100000000||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>P</em><em>R</em><em>O</em><em>P</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>o</em><em>t</em><em>h</em><em>e</em><em>r</em><em>p</em><em>r</em><em>i</em><em>v</em><em>a</em><em>t</em><em>e</em><em>c</em><em>r</em><em>e</em><em>d</em><em>i</em><em>t</em><em>o</em><em>r</em><em>s</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
+<td align="left">Kenya</td>
+<td align="left">KEN</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
+<td align="left">2022</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">External Debt - PPG - Private Banks &amp; Financial Institutions</td>
-<td align="left">DT.DOD.PCBK.CD</td>
-<td align="left">2022</td>
+<td align="left">DT.DOD.BLAT.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, bilateral (DOD, current US$)</td>
 <td align="left">Kenya</td>
-<td align="right">0</td>
-<td align="right">1097776462</td>
-</tr>
-<tr class="even">
-<td align="left">External Debt - PPG - Total</td>
-<td align="left">DT.DOD.DPPG.CD</td>
+<td align="left">KEN</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
 <td align="left">2022</td>
-<td align="left">Kenya</td>
-<td align="right">6685750503</td>
-<td align="right">35037185972</td>
+<td align="right">10119631310</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/get_debt.html">get_debt</a></span><span class="op">(</span>debtor <span class="op">=</span> <span class="st">"Nigeria"</span>, by_year <span class="op">=</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">idswb_ob</span>, <span class="st">"ids_wb"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="co"># query data</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">wb_debtor_country_name</span> <span class="op">==</span> <span class="st">"Nigeria"</span>,</span>
+<span>         <span class="va">wb_creditor_name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"China"</span>,<span class="st">"World"</span><span class="op">)</span>,</span>
+<span>         <span class="va">api_code</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DT.DOD.BLAT.CD"</span>,</span>
+<span>                         <span class="st">"DT.DOD.PBND.CD"</span>,</span>
+<span>                         <span class="st">'DT.DOD.MLAT.CD'</span>,</span>
+<span>                         <span class="st">"DT.DOD.PROP.CD"</span>,</span>
+<span>                         <span class="st">"DT.DOD.PCBK.CD"</span>,</span>
+<span>                         <span class="st">"DT.DOD.DPPG.CD"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html" class="external-link">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="co"># gather data</span></span>
+<span>  <span class="fu">gather</span><span class="op">(</span>key <span class="op">=</span> <span class="va">year</span>,value <span class="op">=</span> <span class="va">debt</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">api_code</span>, <span class="va">data_last_updated</span>, <span class="va">series_full_name</span>, <span class="va">wb_debtor_country_name</span>, <span class="va">wb_debtor_country_id</span>,  </span>
+<span>                                    <span class="va">wb_creditor_name</span>, <span class="va">wb_creditor_id</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>data_last_updated <span class="op">=</span> <span class="fu">as_datetime</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">data_last_updated</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="52%">
-<col width="13%">
+<col width="4%">
 <col width="5%">
-<col width="7%">
-<col width="10%">
-<col width="11%">
+<col width="63%">
+<col width="6%">
+<col width="6%">
+<col width="4%">
+<col width="4%">
+<col width="1%">
+<col width="3%">
 </colgroup>
 <thead><tr class="header">
-<th align="left">series</th>
-<th align="left">id</th>
+<th align="left">api_code</th>
+<th align="left">data_last_updated</th>
+<th align="left">series_full_name</th>
+<th align="left">wb_debtor_country_name</th>
+<th align="left">wb_debtor_country_id</th>
+<th align="left">wb_creditor_name</th>
+<th align="left">wb_creditor_id</th>
 <th align="left">year</th>
-<th align="left">debtor</th>
-<th align="right">China</th>
-<th align="right">World</th>
+<th align="right">debt</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">External Debt - PPG - Bilateral</td>
 <td align="left">DT.DOD.BLAT.CD</td>
-<td align="left">2022</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, bilateral (DOD, current US<span class="math inline">)|<em>N</em><em>i</em><em>g</em><em>e</em><em>r</em><em>i</em><em>a</em>|<em>N</em><em>G</em><em>A</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|4291730985||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>B</em><em>L</em><em>A</em><em>T</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>b</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
 <td align="left">Nigeria</td>
-<td align="right">4291730985</td>
+<td align="left">NGA</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
+<td align="left">2022</td>
 <td align="right">5169011908</td>
 </tr>
 <tr class="even">
-<td align="left">External Debt - PPG - Bonds</td>
-<td align="left">DT.DOD.PBND.CD</td>
-<td align="left">2022</td>
+<td align="left">DT.DOD.DPPG.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">External debt stocks, public and publicly guaranteed (PPG) (DOD, current US<span class="math inline">)|<em>N</em><em>i</em><em>g</em><em>e</em><em>r</em><em>i</em><em>a</em>|<em>N</em><em>G</em><em>A</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|4291730985||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>D</em><em>P</em><em>P</em><em>G</em>.<em>C</em><em>D</em>|2024−02−29|<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>d</em><em>e</em><em>b</em><em>t</em><em>s</em><em>t</em><em>o</em><em>c</em><em>k</em><em>s</em>, <em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>a</em><em>n</em><em>d</em><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>l</em><em>y</em><em>g</em><em>u</em><em>a</em><em>r</em><em>a</em><em>n</em><em>t</em><em>e</em><em>e</em><em>d</em>(<em>P</em><em>P</em><em>G</em>)(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
 <td align="left">Nigeria</td>
-<td align="right">0</td>
+<td align="left">NGA</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
+<td align="left">2022</td>
+<td align="right">40003719240</td>
+</tr>
+<tr class="odd">
+<td align="left">DT.DOD.MLAT.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, multilateral (DOD, current US<span class="math inline">)|<em>N</em><em>i</em><em>g</em><em>e</em><em>r</em><em>i</em><em>a</em>|<em>N</em><em>G</em><em>A</em>|<em>W</em><em>o</em><em>r</em><em>l</em><em>d</em>|<em>W</em><em>L</em><em>D</em>|2022|16992036718||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>P</em><em>B</em><em>N</em><em>D</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>b</em><em>o</em><em>n</em><em>d</em><em>s</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
+<td align="left">Nigeria</td>
+<td align="left">NGA</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
+<td align="left">2022</td>
 <td align="right">16364972000</td>
 </tr>
-<tr class="odd">
-<td align="left">External Debt - PPG - Multilateral</td>
-<td align="left">DT.DOD.MLAT.CD</td>
-<td align="left">2022</td>
-<td align="left">Nigeria</td>
-<td align="right">0</td>
-<td align="right">16992036718</td>
-</tr>
 <tr class="even">
-<td align="left">External Debt - PPG - Other Private Creditors</td>
-<td align="left">DT.DOD.PROP.CD</td>
-<td align="left">2022</td>
-<td align="left">Nigeria</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">External Debt - PPG - Private Banks &amp; Financial Institutions</td>
 <td align="left">DT.DOD.PCBK.CD</td>
-<td align="left">2022</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, commercial banks (DOD, current US<span class="math inline">)|<em>N</em><em>i</em><em>g</em><em>e</em><em>r</em><em>i</em><em>a</em>|<em>N</em><em>G</em><em>A</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|<em>N</em><em>A</em>||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>P</em><em>C</em><em>B</em><em>K</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>c</em><em>o</em><em>m</em><em>m</em><em>e</em><em>r</em><em>c</em><em>i</em><em>a</em><em>l</em><em>b</em><em>a</em><em>n</em><em>k</em><em>s</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
 <td align="left">Nigeria</td>
-<td align="right">0</td>
+<td align="left">NGA</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
+<td align="left">2022</td>
 <td align="right">1477698613</td>
 </tr>
-<tr class="even">
-<td align="left">External Debt - PPG - Total</td>
-<td align="left">DT.DOD.DPPG.CD</td>
-<td align="left">2022</td>
+<tr class="odd">
+<td align="left">DT.DOD.PROP.CD</td>
+<td align="left">2024-02-29</td>
+<td align="left">PPG, other private creditors (DOD, current US$)</td>
 <td align="left">Nigeria</td>
-<td align="right">4291730985</td>
-<td align="right">40003719240</td>
+<td align="left">NGA</td>
+<td align="left">World</td>
+<td align="left">WLD</td>
+<td align="left">2022</td>
+<td align="right">NA</td>
 </tr>
 </tbody>
 </table>
