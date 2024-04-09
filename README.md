@@ -42,21 +42,10 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(idswb)
 library(knitr)
+library(tidyverse)
 ```
 
 ## Overview of available datasets in idswb package
-
-- ids: main information on debt
-
-``` r
-ids %>% head() %>% kable()
-```
-
-| ids_short_name                                | api_code       | data_last_updated | series_full_name                                                                                                                                                                                                                           | wb_debtor_country_name | wb_debtor_country_id | wb_creditor_name   | wb_creditor_id | year | ids_value |
-|:----------------------------------------------|:---------------|:------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-------------------|:---------------|:-----|----------:|
-| External Debt - PPG - Total                   | DT.DOD.DPPG.CD | 2024-02-29        | External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) |Afghanistan |AFG |Asian Dev. Bank    |915 |1970 | NA| |External Debt - PPG - Multilateral |DT.DOD.MLAT.CD |2024-02-29 |PPG, multilateral (DOD, current US$) | Afghanistan            | AFG                  | Asian Dev. Bank    | 915            | 1970 |        NA |
-| External Debt - PPG - Total                   | DT.DOD.DPPG.CD | 2024-02-29        | External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) |Afghanistan |AFG |Bulgaria |72 |1970 | NA| |External Debt - PPG - Bilateral |DT.DOD.BLAT.CD |2024-02-29 |PPG, bilateral (DOD, current US$)                  | Afghanistan            | AFG                  | Bulgaria           | 72             | 1970 |        NA |
-| External Debt - PPG - Other Private Creditors | DT.DOD.PROP.CD | 2024-02-29        | PPG, other private creditors (DOD, current US$) |Afghanistan |AFG |Croatia |62 |1970 | NA| |External Debt - PPG - Total |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)         | Afghanistan            | AFG                  | Croatia            | 62             | 1970 |        NA |
 
 - unique_counterpart_area: information on counterparts (creditors)
 
@@ -124,7 +113,7 @@ class, and use the package `idswb` to gain access to the relevant data.
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
 #> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file151167e5cd8e.sqlite3
+#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file261931e23274.sqlite3
 ```
 
 ## Extract
@@ -160,8 +149,6 @@ We can still perform the steps above at once
 ``` r
 # ceating an object
 idswb_ob <-etl("idswb", dir = getwd())
-#> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file15117a3fa8e6.sqlite3
 
 idswb_ob %>% 
   # extract
@@ -170,9 +157,6 @@ idswb_ob %>%
   etl_transform() %>% 
   # load
   etl_load()
-#> Extracting raw data...
-#> Transforming raw data ...
-#> Loading data to the database...
 ```
 
 ## Querying data
@@ -181,27 +165,57 @@ We can now query debt of a given country that it owes to both China and
 the World as follows using `get_debt()` function
 
 ``` r
-get_debt(debtor = "Kenya", by_year = 2022) %>% kable()
+dplyr::tbl(idswb_ob, "ids_wb") %>% 
+  # query data
+  dplyr::filter(wb_debtor_country_name == "Kenya",
+         wb_creditor_name %in% c("China","World"),
+         api_code %in% c("DT.DOD.BLAT.CD",
+                         "DT.DOD.PBND.CD",
+                         'DT.DOD.MLAT.CD',
+                         "DT.DOD.PROP.CD",
+                         "DT.DOD.PCBK.CD",
+                         "DT.DOD.DPPG.CD")) %>% 
+  dplyr::collect() %>% 
+  # gather data
+  gather(key = year,value = debt,-c(api_code, data_last_updated, series_full_name, wb_debtor_country_name, wb_debtor_country_id,  
+                                    wb_creditor_name, wb_creditor_id)) %>% 
+  filter(year == 2022) %>% 
+  mutate(data_last_updated = as_datetime(as.numeric(data_last_updated))) %>% 
+  knitr::kable()
 ```
 
-| series                                                       | id             | year | debtor |      China |       World |
-|:-------------------------------------------------------------|:---------------|:-----|:-------|-----------:|------------:|
-| External Debt - PPG - Bilateral                              | DT.DOD.BLAT.CD | 2022 | Kenya  | 6685750503 | 10119631310 |
-| External Debt - PPG - Bonds                                  | DT.DOD.PBND.CD | 2022 | Kenya  |          0 |  7100000000 |
-| External Debt - PPG - Multilateral                           | DT.DOD.MLAT.CD | 2022 | Kenya  |          0 | 16719778200 |
-| External Debt - PPG - Other Private Creditors                | DT.DOD.PROP.CD | 2022 | Kenya  |          0 |           0 |
-| External Debt - PPG - Private Banks & Financial Institutions | DT.DOD.PCBK.CD | 2022 | Kenya  |          0 |  1097776462 |
-| External Debt - PPG - Total                                  | DT.DOD.DPPG.CD | 2022 | Kenya  | 6685750503 | 35037185972 |
+| api_code       | data_last_updated | series_full_name                                                                                                                                                                                | wb_debtor_country_name | wb_debtor_country_id | wb_creditor_name | wb_creditor_id | year |        debt |
+|:---------------|:------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-----------------|:---------------|:-----|------------:|
+| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US$) |Kenya |KEN |China |730 |2022 | 6685750503| |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)        | Kenya                  | KEN                  | China            | 730            | 2022 |  6685750503 |
+| DT.DOD.PROP.CD | 2024-02-29        | PPG, other private creditors (DOD, current US$) |Kenya |KEN |China |730 |2022 | NA| |DT.DOD.MLAT.CD |2024-02-29 |PPG, multilateral (DOD, current US$)                                           | Kenya                  | KEN                  | World            | WLD            | 2022 | 16719778200 |
+| DT.DOD.PCBK.CD | 2024-02-29        | PPG, commercial banks (DOD, current US$) |Kenya |KEN |World |WLD |2022 | 1097776462| |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) | Kenya                  | KEN                  | World            | WLD            | 2022 | 35037185972 |
+| DT.DOD.PBND.CD | 2024-02-29        | PPG, bonds (DOD, current US$) |Kenya |KEN |World |WLD |2022 | 7100000000| |DT.DOD.PROP.CD |2024-02-29 |PPG, other private creditors (DOD, current US$)                                          | Kenya                  | KEN                  | World            | WLD            | 2022 |          NA |
+| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US\$)                                                                                                                                                              | Kenya                  | KEN                  | World            | WLD            | 2022 | 10119631310 |
 
 ``` r
-get_debt(debtor = "Nigeria", by_year = 2022) %>% kable()
+dplyr::tbl(idswb_ob, "ids_wb") %>% 
+  # query data
+  dplyr::filter(wb_debtor_country_name == "Nigeria",
+         wb_creditor_name %in% c("China","World"),
+         api_code %in% c("DT.DOD.BLAT.CD",
+                         "DT.DOD.PBND.CD",
+                         'DT.DOD.MLAT.CD',
+                         "DT.DOD.PROP.CD",
+                         "DT.DOD.PCBK.CD",
+                         "DT.DOD.DPPG.CD")) %>% 
+  dplyr::collect() %>% 
+  # gather data
+  gather(key = year,value = debt,-c(api_code, data_last_updated, series_full_name, wb_debtor_country_name, wb_debtor_country_id,  
+                                    wb_creditor_name, wb_creditor_id)) %>% 
+  filter(year == 2022) %>% 
+  mutate(data_last_updated = as_datetime(as.numeric(data_last_updated))) %>% 
+  knitr::kable()
 ```
 
-| series                                                       | id             | year | debtor  |      China |       World |
-|:-------------------------------------------------------------|:---------------|:-----|:--------|-----------:|------------:|
-| External Debt - PPG - Bilateral                              | DT.DOD.BLAT.CD | 2022 | Nigeria | 4291730985 |  5169011908 |
-| External Debt - PPG - Bonds                                  | DT.DOD.PBND.CD | 2022 | Nigeria |          0 | 16364972000 |
-| External Debt - PPG - Multilateral                           | DT.DOD.MLAT.CD | 2022 | Nigeria |          0 | 16992036718 |
-| External Debt - PPG - Other Private Creditors                | DT.DOD.PROP.CD | 2022 | Nigeria |          0 |           0 |
-| External Debt - PPG - Private Banks & Financial Institutions | DT.DOD.PCBK.CD | 2022 | Nigeria |          0 |  1477698613 |
-| External Debt - PPG - Total                                  | DT.DOD.DPPG.CD | 2022 | Nigeria | 4291730985 | 40003719240 |
+| api_code       | data_last_updated | series_full_name                                                                                                                                                                                                                       | wb_debtor_country_name | wb_debtor_country_id | wb_creditor_name | wb_creditor_id | year |        debt |
+|:---------------|:------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-----------------|:---------------|:-----|------------:|
+| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US$) |Nigeria |NGA |China |730 |2022 | 4291730985| |DT.DOD.BLAT.CD |2024-02-29 |PPG, bilateral (DOD, current US$)                                                                                         | Nigeria                | NGA                  | World            | WLD            | 2022 |  5169011908 |
+| DT.DOD.DPPG.CD | 2024-02-29        | External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) |Nigeria |NGA |China |730 |2022 | 4291730985| |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) | Nigeria                | NGA                  | World            | WLD            | 2022 | 40003719240 |
+| DT.DOD.MLAT.CD | 2024-02-29        | PPG, multilateral (DOD, current US$) |Nigeria |NGA |World |WLD |2022 | 16992036718| |DT.DOD.PBND.CD |2024-02-29 |PPG, bonds (DOD, current US$)                                                                                         | Nigeria                | NGA                  | World            | WLD            | 2022 | 16364972000 |
+| DT.DOD.PCBK.CD | 2024-02-29        | PPG, commercial banks (DOD, current US$) |Nigeria |NGA |China |730 |2022 | NA| |DT.DOD.PCBK.CD |2024-02-29 |PPG, commercial banks (DOD, current US$)                                                                                   | Nigeria                | NGA                  | World            | WLD            | 2022 |  1477698613 |
+| DT.DOD.PROP.CD | 2024-02-29        | PPG, other private creditors (DOD, current US\$)                                                                                                                                                                                       | Nigeria                | NGA                  | World            | WLD            | 2022 |          NA |
