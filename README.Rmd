@@ -171,14 +171,15 @@ We can now query debt of a given country that it owes to both China and the Worl
 
 `Query 1:`
 ```{r}
-# inputs specificatio
+# input specifications
 series <- c("DT.DOD.BLAT.CD","DT.DOD.PBND.CD",'DT.DOD.MLAT.CD',"DT.DOD.PROP.CD","DT.DOD.PCBK.CD","DT.DOD.DPPG.CD")
 debtor <- "Kenya"
 creditor <- c("China","World")
 
 # Querying data
 ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, series = series) %>% 
-  dplyr::filter(year == "2022") 
+  dplyr::filter(year == "2022") %>% 
+  kable()
 
 ```
 
@@ -187,17 +188,17 @@ ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, seri
 ```
 `Query 2:`
 ```{r}
-# inputs specificatio
+# input specifications
 series <- c("DT.DOD.BLAT.CD","DT.DOD.PBND.CD",'DT.DOD.MLAT.CD',"DT.DOD.PROP.CD","DT.DOD.PCBK.CD","DT.DOD.DPPG.CD")
 debtor <- "Nigeria"
 creditor <- c("China","World")
 
 # Querying data
 ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, series = series) %>% 
-  dplyr::filter(year == "2022") 
+  dplyr::filter(year == "2022") %>% 
+  kable()
 ```
 
 ```{r}
 
 ```
-
