@@ -298,89 +298,21 @@
 <span></span>
 <span><span class="co"># Querying data</span></span>
 <span><span class="fu"><a href="reference/ids_query_data.html">ids_query_data</a></span><span class="op">(</span>etl_object <span class="op">=</span> <span class="va">idswb_ob</span>, debtor <span class="op">=</span> <span class="va">debtor</span>, creditor <span class="op">=</span> <span class="va">creditor</span>, series <span class="op">=</span> <span class="va">series</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"2022"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<table style="width:100%;" class="table">
-<colgroup>
-<col width="5%">
-<col width="6%">
-<col width="57%">
-<col width="7%">
-<col width="7%">
-<col width="5%">
-<col width="5%">
-<col width="1%">
-<col width="4%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">api_code</th>
-<th align="left">data_last_updated</th>
-<th align="left">series_full_name</th>
-<th align="left">wb_debtor_country_name</th>
-<th align="left">wb_debtor_country_id</th>
-<th align="left">wb_creditor_name</th>
-<th align="left">wb_creditor_id</th>
-<th align="right">year</th>
-<th align="right">debt</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">DT.DOD.BLAT.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, bilateral (DOD, current US<span class="math inline">)|<em>K</em><em>e</em><em>n</em><em>y</em><em>a</em>|<em>K</em><em>E</em><em>N</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|6685750503||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>D</em><em>P</em><em>P</em><em>G</em>.<em>C</em><em>D</em>|2024−02−29|<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>d</em><em>e</em><em>b</em><em>t</em><em>s</em><em>t</em><em>o</em><em>c</em><em>k</em><em>s</em>, <em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>a</em><em>n</em><em>d</em><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>l</em><em>y</em><em>g</em><em>u</em><em>a</em><em>r</em><em>a</em><em>n</em><em>t</em><em>e</em><em>e</em><em>d</em>(<em>P</em><em>P</em><em>G</em>)(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Kenya</td>
-<td align="left">KEN</td>
-<td align="left">China</td>
-<td align="left">730</td>
-<td align="right">2022</td>
-<td align="right">6685750503</td>
-</tr>
-<tr class="even">
-<td align="left">DT.DOD.PROP.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, other private creditors (DOD, current US<span class="math inline">)|<em>K</em><em>e</em><em>n</em><em>y</em><em>a</em>|<em>K</em><em>E</em><em>N</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|<em>N</em><em>A</em>||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>M</em><em>L</em><em>A</em><em>T</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>m</em><em>u</em><em>l</em><em>t</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Kenya</td>
-<td align="left">KEN</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">16719778200</td>
-</tr>
-<tr class="odd">
-<td align="left">DT.DOD.PCBK.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, commercial banks (DOD, current US<span class="math inline">)|<em>K</em><em>e</em><em>n</em><em>y</em><em>a</em>|<em>K</em><em>E</em><em>N</em>|<em>W</em><em>o</em><em>r</em><em>l</em><em>d</em>|<em>W</em><em>L</em><em>D</em>|2022|1097776462||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>D</em><em>P</em><em>P</em><em>G</em>.<em>C</em><em>D</em>|2024−02−29|<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>d</em><em>e</em><em>b</em><em>t</em><em>s</em><em>t</em><em>o</em><em>c</em><em>k</em><em>s</em>, <em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>a</em><em>n</em><em>d</em><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>l</em><em>y</em><em>g</em><em>u</em><em>a</em><em>r</em><em>a</em><em>n</em><em>t</em><em>e</em><em>e</em><em>d</em>(<em>P</em><em>P</em><em>G</em>)(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Kenya</td>
-<td align="left">KEN</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">35037185972</td>
-</tr>
-<tr class="even">
-<td align="left">DT.DOD.PBND.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, bonds (DOD, current US<span class="math inline">)|<em>K</em><em>e</em><em>n</em><em>y</em><em>a</em>|<em>K</em><em>E</em><em>N</em>|<em>W</em><em>o</em><em>r</em><em>l</em><em>d</em>|<em>W</em><em>L</em><em>D</em>|2022|7100000000||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>P</em><em>R</em><em>O</em><em>P</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>o</em><em>t</em><em>h</em><em>e</em><em>r</em><em>p</em><em>r</em><em>i</em><em>v</em><em>a</em><em>t</em><em>e</em><em>c</em><em>r</em><em>e</em><em>d</em><em>i</em><em>t</em><em>o</em><em>r</em><em>s</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Kenya</td>
-<td align="left">KEN</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">DT.DOD.BLAT.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, bilateral (DOD, current US$)</td>
-<td align="left">Kenya</td>
-<td align="left">KEN</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">10119631310</td>
-</tr>
-</tbody>
-</table>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"2022"</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; # A tibble: 9 × 9</span></span>
+<span><span class="co">#&gt;   api_code       data_last_updated   series_full_name     wb_debtor_country_name</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;dttm&gt;              &lt;chr&gt;                &lt;chr&gt;                 </span></span>
+<span><span class="co">#&gt; 1 DT.DOD.BLAT.CD 2024-02-29 00:00:00 PPG, bilateral (DOD… Kenya                 </span></span>
+<span><span class="co">#&gt; 2 DT.DOD.DPPG.CD 2024-02-29 00:00:00 External debt stock… Kenya                 </span></span>
+<span><span class="co">#&gt; 3 DT.DOD.PROP.CD 2024-02-29 00:00:00 PPG, other private … Kenya                 </span></span>
+<span><span class="co">#&gt; 4 DT.DOD.MLAT.CD 2024-02-29 00:00:00 PPG, multilateral (… Kenya                 </span></span>
+<span><span class="co">#&gt; 5 DT.DOD.PCBK.CD 2024-02-29 00:00:00 PPG, commercial ban… Kenya                 </span></span>
+<span><span class="co">#&gt; 6 DT.DOD.DPPG.CD 2024-02-29 00:00:00 External debt stock… Kenya                 </span></span>
+<span><span class="co">#&gt; 7 DT.DOD.PBND.CD 2024-02-29 00:00:00 PPG, bonds (DOD, cu… Kenya                 </span></span>
+<span><span class="co">#&gt; 8 DT.DOD.PROP.CD 2024-02-29 00:00:00 PPG, other private … Kenya                 </span></span>
+<span><span class="co">#&gt; 9 DT.DOD.BLAT.CD 2024-02-29 00:00:00 PPG, bilateral (DOD… Kenya                 </span></span>
+<span><span class="co">#&gt; # ℹ 5 more variables: wb_debtor_country_id &lt;chr&gt;, wb_creditor_name &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   wb_creditor_id &lt;chr&gt;, year &lt;dbl&gt;, debt &lt;dbl&gt;</span></span></code></pre></div>
 <p><code>Query 2:</code></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># inputs specificatio</span></span>
@@ -390,89 +322,21 @@
 <span></span>
 <span><span class="co"># Querying data</span></span>
 <span><span class="fu"><a href="reference/ids_query_data.html">ids_query_data</a></span><span class="op">(</span>etl_object <span class="op">=</span> <span class="va">idswb_ob</span>, debtor <span class="op">=</span> <span class="va">debtor</span>, creditor <span class="op">=</span> <span class="va">creditor</span>, series <span class="op">=</span> <span class="va">series</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"2022"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<table style="width:100%;" class="table">
-<colgroup>
-<col width="5%">
-<col width="6%">
-<col width="57%">
-<col width="7%">
-<col width="7%">
-<col width="5%">
-<col width="5%">
-<col width="1%">
-<col width="4%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">api_code</th>
-<th align="left">data_last_updated</th>
-<th align="left">series_full_name</th>
-<th align="left">wb_debtor_country_name</th>
-<th align="left">wb_debtor_country_id</th>
-<th align="left">wb_creditor_name</th>
-<th align="left">wb_creditor_id</th>
-<th align="right">year</th>
-<th align="right">debt</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">DT.DOD.BLAT.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, bilateral (DOD, current US<span class="math inline">)|<em>N</em><em>i</em><em>g</em><em>e</em><em>r</em><em>i</em><em>a</em>|<em>N</em><em>G</em><em>A</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|4291730985||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>B</em><em>L</em><em>A</em><em>T</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>b</em><em>i</em><em>l</em><em>a</em><em>t</em><em>e</em><em>r</em><em>a</em><em>l</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Nigeria</td>
-<td align="left">NGA</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">5169011908</td>
-</tr>
-<tr class="even">
-<td align="left">DT.DOD.DPPG.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">External debt stocks, public and publicly guaranteed (PPG) (DOD, current US<span class="math inline">)|<em>N</em><em>i</em><em>g</em><em>e</em><em>r</em><em>i</em><em>a</em>|<em>N</em><em>G</em><em>A</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|4291730985||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>D</em><em>P</em><em>P</em><em>G</em>.<em>C</em><em>D</em>|2024−02−29|<em>E</em><em>x</em><em>t</em><em>e</em><em>r</em><em>n</em><em>a</em><em>l</em><em>d</em><em>e</em><em>b</em><em>t</em><em>s</em><em>t</em><em>o</em><em>c</em><em>k</em><em>s</em>, <em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>a</em><em>n</em><em>d</em><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>l</em><em>y</em><em>g</em><em>u</em><em>a</em><em>r</em><em>a</em><em>n</em><em>t</em><em>e</em><em>e</em><em>d</em>(<em>P</em><em>P</em><em>G</em>)(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Nigeria</td>
-<td align="left">NGA</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">40003719240</td>
-</tr>
-<tr class="odd">
-<td align="left">DT.DOD.MLAT.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, multilateral (DOD, current US<span class="math inline">)|<em>N</em><em>i</em><em>g</em><em>e</em><em>r</em><em>i</em><em>a</em>|<em>N</em><em>G</em><em>A</em>|<em>W</em><em>o</em><em>r</em><em>l</em><em>d</em>|<em>W</em><em>L</em><em>D</em>|2022|16992036718||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>P</em><em>B</em><em>N</em><em>D</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>b</em><em>o</em><em>n</em><em>d</em><em>s</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Nigeria</td>
-<td align="left">NGA</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">16364972000</td>
-</tr>
-<tr class="even">
-<td align="left">DT.DOD.PCBK.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, commercial banks (DOD, current US<span class="math inline">)|<em>N</em><em>i</em><em>g</em><em>e</em><em>r</em><em>i</em><em>a</em>|<em>N</em><em>G</em><em>A</em>|<em>C</em><em>h</em><em>i</em><em>n</em><em>a</em>|730|2022|<em>N</em><em>A</em>||<em>D</em><em>T</em>.<em>D</em><em>O</em><em>D</em>.<em>P</em><em>C</em><em>B</em><em>K</em>.<em>C</em><em>D</em>|2024−02−29|<em>P</em><em>P</em><em>G</em>, <em>c</em><em>o</em><em>m</em><em>m</em><em>e</em><em>r</em><em>c</em><em>i</em><em>a</em><em>l</em><em>b</em><em>a</em><em>n</em><em>k</em><em>s</em>(<em>D</em><em>O</em><em>D</em>, <em>c</em><em>u</em><em>r</em><em>r</em><em>e</em><em>n</em><em>t</em><em>U</em><em>S</em></span>)</td>
-<td align="left">Nigeria</td>
-<td align="left">NGA</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">1477698613</td>
-</tr>
-<tr class="odd">
-<td align="left">DT.DOD.PROP.CD</td>
-<td align="left">2024-02-29</td>
-<td align="left">PPG, other private creditors (DOD, current US$)</td>
-<td align="left">Nigeria</td>
-<td align="left">NGA</td>
-<td align="left">World</td>
-<td align="left">WLD</td>
-<td align="right">2022</td>
-<td align="right">NA</td>
-</tr>
-</tbody>
-</table>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"2022"</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; # A tibble: 9 × 9</span></span>
+<span><span class="co">#&gt;   api_code       data_last_updated   series_full_name     wb_debtor_country_name</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;dttm&gt;              &lt;chr&gt;                &lt;chr&gt;                 </span></span>
+<span><span class="co">#&gt; 1 DT.DOD.BLAT.CD 2024-02-29 00:00:00 PPG, bilateral (DOD… Nigeria               </span></span>
+<span><span class="co">#&gt; 2 DT.DOD.BLAT.CD 2024-02-29 00:00:00 PPG, bilateral (DOD… Nigeria               </span></span>
+<span><span class="co">#&gt; 3 DT.DOD.DPPG.CD 2024-02-29 00:00:00 External debt stock… Nigeria               </span></span>
+<span><span class="co">#&gt; 4 DT.DOD.DPPG.CD 2024-02-29 00:00:00 External debt stock… Nigeria               </span></span>
+<span><span class="co">#&gt; 5 DT.DOD.MLAT.CD 2024-02-29 00:00:00 PPG, multilateral (… Nigeria               </span></span>
+<span><span class="co">#&gt; 6 DT.DOD.PBND.CD 2024-02-29 00:00:00 PPG, bonds (DOD, cu… Nigeria               </span></span>
+<span><span class="co">#&gt; 7 DT.DOD.PCBK.CD 2024-02-29 00:00:00 PPG, commercial ban… Nigeria               </span></span>
+<span><span class="co">#&gt; 8 DT.DOD.PCBK.CD 2024-02-29 00:00:00 PPG, commercial ban… Nigeria               </span></span>
+<span><span class="co">#&gt; 9 DT.DOD.PROP.CD 2024-02-29 00:00:00 PPG, other private … Nigeria               </span></span>
+<span><span class="co">#&gt; # ℹ 5 more variables: wb_debtor_country_id &lt;chr&gt;, wb_creditor_name &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   wb_creditor_id &lt;chr&gt;, year &lt;dbl&gt;, debt &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
