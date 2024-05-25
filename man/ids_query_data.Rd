@@ -2,9 +2,7 @@
 % Please edit documentation in R/ids_query_data.R
 \name{ids_query_data}
 \alias{ids_query_data}
-\title{ids_query_data
-Gets debt information for a given country (debtor) that it owes to any creditor.
-The default creditors are both China and the World}
+\title{Query debt data}
 \usage{
 ids_query_data(etl_object, debtor, creditor = c("China", "World"), series)
 }
@@ -21,7 +19,6 @@ ids_query_data(etl_object, debtor, creditor = c("China", "World"), series)
 Returns a tibble showing how debtor owes to any creditor. The default creditors are both China and the World
 }
 \description{
-ids_query_data
-Gets debt information for a given country (debtor) that it owes to any creditor.
+Query debt information for a given country (debtor) that it owes to any creditor.
 The default creditors are both China and the World
 }

@@ -83,11 +83,14 @@ unique_country %>% head() %>% kable()
 unique_series %>% head() %>% kable()
 ```
 
-| ids_series_id     | ids_series_name                                                                                                                                                  |
-|:------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| BM.GSR.TOTL.CD    | Imports of goods, services and primary income (current US$) | |BN.CAB.XOKA.CD |Current account balance (current US$)                                             |
-| BX.GRT.EXTA.CD.DT | Grants, excluding technical cooperation (current US$) | |BX.GRT.TECH.CD.DT |Technical cooperation grants (current US$)                                           |
-| BX.GSR.TOTL.CD    | Exports of goods, services and primary income (current US$) | |BX.KLT.DINV.CD.DT |Foreign direct investment, net inflows in reporting economy (DRS, current US$) |
+| ids_series_id     | ids_series_name                                                                                    |
+|:------------------|:---------------------------------------------------------------------------------------------------|
+| BM.GSR.TOTL.CD    | Imports of goods, services and primary income (current US$)                    |                   
+                     |BN.CAB.XOKA.CD    |Current account balance (current US$)                                           |
+| BX.GRT.EXTA.CD.DT | Grants, excluding technical cooperation (current US$)                          |                   
+                     |BX.GRT.TECH.CD.DT |Technical cooperation grants (current US$)                                      |
+| BX.GSR.TOTL.CD    | Exports of goods, services and primary income (current US$)                    |                   
+                     |BX.KLT.DINV.CD.DT |Foreign direct investment, net inflows in reporting economy (DRS, current US$)  |
 
 - unique_time: information on years
 
@@ -111,9 +114,7 @@ class, and use the package `idswb` to gain access to the relevant data.
 
 ``` r
 # ceating an object
-idswb_ob <-etl("idswb", dir = getwd())
-#> No database was specified so I created one for you at:
-#> /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2ae02064952f.sqlite3
+# idswb_ob <-etl("idswb", dir = getwd())
 ```
 
 ## Extract
@@ -121,8 +122,7 @@ idswb_ob <-etl("idswb", dir = getwd())
 The first step here is to acquire data
 
 ``` r
-idswb_ob %>% etl_extract()
-#> Extracting raw data...
+# idswb_ob %>% etl_extract()
 ```
 
 ## Transform
@@ -131,8 +131,7 @@ This data might require conversion from its original format into files
 that are appropriate for SQL import, typically in CSV format.
 
 ``` r
-idswb_ob %>% etl_transform()
-#> Transforming raw data ...
+# idswb_ob %>% etl_transform()
 ```
 
 ## Load
@@ -140,8 +139,7 @@ idswb_ob %>% etl_transform()
 Fill the SQL database with the processed data.
 
 ``` r
-idswb_ob %>% etl_load()
-#> Loading data to the database...
+# idswb_ob %>% etl_load()
 ```
 
 We can still perform the steps above at once
@@ -159,6 +157,12 @@ idswb_ob %>%
   etl_load()
 ```
 
+## Using etl_create method
+
+``` r
+# idswb_ob %>% etl_create()
+```
+
 ## Querying data
 
 We can now query debt of a given country that it owes to both China and
@@ -167,59 +171,51 @@ the World as follows
 `Query 1:`
 
 ``` r
-dplyr::tbl(idswb_ob, "ids_wb") %>% 
-  # query data
-  dplyr::filter(wb_debtor_country_name == "Kenya",
-         wb_creditor_name %in% c("China","World"),
-         api_code %in% c("DT.DOD.BLAT.CD",
-                         "DT.DOD.PBND.CD",
-                         'DT.DOD.MLAT.CD',
-                         "DT.DOD.PROP.CD",
-                         "DT.DOD.PCBK.CD",
-                         "DT.DOD.DPPG.CD")) %>% 
-  dplyr::collect() %>% 
-  # gather data
-  gather(key = year,value = debt,-c(api_code, data_last_updated, series_full_name, wb_debtor_country_name, wb_debtor_country_id,  
-                                    wb_creditor_name, wb_creditor_id)) %>% 
-  filter(year == 2022) %>% 
-  mutate(data_last_updated = as_datetime(as.numeric(data_last_updated))) %>% 
+# inputs specificatio
+series <- c("DT.DOD.BLAT.CD","DT.DOD.PBND.CD",'DT.DOD.MLAT.CD',"DT.DOD.PROP.CD","DT.DOD.PCBK.CD","DT.DOD.DPPG.CD")
+debtor <- "Kenya"
+creditor <- c("China","World")
+
+# Querying data
+ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, series = series) %>% 
+  filter(year == "2022") %>% 
   knitr::kable()
 ```
 
-| api_code       | data_last_updated | series_full_name                                                                                                                                                                                | wb_debtor_country_name | wb_debtor_country_id | wb_creditor_name | wb_creditor_id | year |        debt |
-|:---------------|:------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-----------------|:---------------|:-----|------------:|
-| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US$) |Kenya |KEN |China |730 |2022 | 6685750503| |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)        | Kenya                  | KEN                  | China            | 730            | 2022 |  6685750503 |
-| DT.DOD.PROP.CD | 2024-02-29        | PPG, other private creditors (DOD, current US$) |Kenya |KEN |China |730 |2022 | NA| |DT.DOD.MLAT.CD |2024-02-29 |PPG, multilateral (DOD, current US$)                                           | Kenya                  | KEN                  | World            | WLD            | 2022 | 16719778200 |
-| DT.DOD.PCBK.CD | 2024-02-29        | PPG, commercial banks (DOD, current US$) |Kenya |KEN |World |WLD |2022 | 1097776462| |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) | Kenya                  | KEN                  | World            | WLD            | 2022 | 35037185972 |
-| DT.DOD.PBND.CD | 2024-02-29        | PPG, bonds (DOD, current US$) |Kenya |KEN |World |WLD |2022 | 7100000000| |DT.DOD.PROP.CD |2024-02-29 |PPG, other private creditors (DOD, current US$)                                          | Kenya                  | KEN                  | World            | WLD            | 2022 |          NA |
-| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US\$)                                                                                                                                                              | Kenya                  | KEN                  | World            | WLD            | 2022 | 10119631310 |
+| api_code       | data_last_updated | series_full_name                                                                                                                                                                   | wb_debtor_country_name | wb_debtor_country_id | wb_creditor_name | wb_creditor_id | year |        debt |
+|:---------------|:------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-----------------|:---------------|:-----|------------:|
+| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US$)                                             |Kenya                  |KEN                  |China            |730            |2022 |  6685750503| 
+                                      |DT.DOD.DPPG.CD |2024-02-29        |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)                                                                   | Kenya                  | KEN                  | China            | 730            | 2022 |  6685750503 |
+| DT.DOD.PROP.CD | 2024-02-29        | PPG, other private creditors (DOD, current US$)                               |Kenya                  |KEN                  |China            |730            |2022 |          NA| 
+                                      |DT.DOD.MLAT.CD |2024-02-29        |PPG, multilateral (DOD, current US$)                                                                                                            | Kenya                  | KEN                  | World            | WLD            | 2022 | 16719778200 |
+| DT.DOD.PCBK.CD | 2024-02-29        | PPG, commercial banks (DOD, current US$)                                      |Kenya                  |KEN                  |World            |WLD            |2022 |  1097776462| 
+                                      |DT.DOD.DPPG.CD |2024-02-29        |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)                                                                   | Kenya                  | KEN                  | World            | WLD            | 2022 | 35037185972 |
+| DT.DOD.PBND.CD | 2024-02-29        | PPG, bonds (DOD, current US$)                                                 |Kenya                  |KEN                  |World            |WLD            |2022 |  7100000000| 
+                                      |DT.DOD.PROP.CD |2024-02-29        |PPG, other private creditors (DOD, current US$)                                                                                                 | Kenya                  | KEN                  | World            | WLD            | 2022 |          NA |
+| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US\$)                                                                                                                                                 | Kenya                  | KEN                  | World            | WLD            | 2022 | 10119631310 |
 
 `Query 2:`
 
 ``` r
-dplyr::tbl(idswb_ob, "ids_wb") %>% 
-  # query data
-  dplyr::filter(wb_debtor_country_name == "Nigeria",
-         wb_creditor_name %in% c("China","World"),
-         api_code %in% c("DT.DOD.BLAT.CD",
-                         "DT.DOD.PBND.CD",
-                         'DT.DOD.MLAT.CD',
-                         "DT.DOD.PROP.CD",
-                         "DT.DOD.PCBK.CD",
-                         "DT.DOD.DPPG.CD")) %>% 
-  dplyr::collect() %>% 
-  # gather data
-  gather(key = year,value = debt,-c(api_code, data_last_updated, series_full_name, wb_debtor_country_name, wb_debtor_country_id,  
-                                    wb_creditor_name, wb_creditor_id)) %>% 
-  filter(year == 2022) %>% 
-  mutate(data_last_updated = as_datetime(as.numeric(data_last_updated))) %>% 
+# inputs specificatio
+series <- c("DT.DOD.BLAT.CD","DT.DOD.PBND.CD",'DT.DOD.MLAT.CD',"DT.DOD.PROP.CD","DT.DOD.PCBK.CD","DT.DOD.DPPG.CD")
+debtor <- "Nigeria"
+creditor <- c("China","World")
+
+# Querying data
+ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, series = series) %>% 
+  filter(year == "2022") %>% 
   knitr::kable()
 ```
 
-| api_code       | data_last_updated | series_full_name                                                                                                                                                                                                                       | wb_debtor_country_name | wb_debtor_country_id | wb_creditor_name | wb_creditor_id | year |        debt |
-|:---------------|:------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-----------------|:---------------|:-----|------------:|
-| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US$) |Nigeria |NGA |China |730 |2022 | 4291730985| |DT.DOD.BLAT.CD |2024-02-29 |PPG, bilateral (DOD, current US$)                                                                                         | Nigeria                | NGA                  | World            | WLD            | 2022 |  5169011908 |
-| DT.DOD.DPPG.CD | 2024-02-29        | External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) |Nigeria |NGA |China |730 |2022 | 4291730985| |DT.DOD.DPPG.CD |2024-02-29 |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) | Nigeria                | NGA                  | World            | WLD            | 2022 | 40003719240 |
-| DT.DOD.MLAT.CD | 2024-02-29        | PPG, multilateral (DOD, current US$) |Nigeria |NGA |World |WLD |2022 | 16992036718| |DT.DOD.PBND.CD |2024-02-29 |PPG, bonds (DOD, current US$)                                                                                         | Nigeria                | NGA                  | World            | WLD            | 2022 | 16364972000 |
-| DT.DOD.PCBK.CD | 2024-02-29        | PPG, commercial banks (DOD, current US$) |Nigeria |NGA |China |730 |2022 | NA| |DT.DOD.PCBK.CD |2024-02-29 |PPG, commercial banks (DOD, current US$)                                                                                   | Nigeria                | NGA                  | World            | WLD            | 2022 |  1477698613 |
-| DT.DOD.PROP.CD | 2024-02-29        | PPG, other private creditors (DOD, current US\$)                                                                                                                                                                                       | Nigeria                | NGA                  | World            | WLD            | 2022 |          NA |
+| api_code       | data_last_updated | series_full_name                                                                                                                                                                   | wb_debtor_country_name | wb_debtor_country_id | wb_creditor_name | wb_creditor_id | year |        debt |
+|:---------------|:------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-----------------|:---------------|:-----|------------:|
+| DT.DOD.BLAT.CD | 2024-02-29        | PPG, bilateral (DOD, current US$)                                             |Nigeria                |NGA                  |China            |730            |2022 |  4291730985| 
+                                      |DT.DOD.BLAT.CD |2024-02-29        |PPG, bilateral (DOD, current US$)                                                                                                               | Nigeria                | NGA                  | World            | WLD            | 2022 |  5169011908 |
+| DT.DOD.DPPG.CD | 2024-02-29        | External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$) |Nigeria                |NGA                  |China            |730            |2022 |  4291730985| 
+                                      |DT.DOD.DPPG.CD |2024-02-29        |External debt stocks, public and publicly guaranteed (PPG) (DOD, current US$)                                                                   | Nigeria                | NGA                  | World            | WLD            | 2022 | 40003719240 |
+| DT.DOD.MLAT.CD | 2024-02-29        | PPG, multilateral (DOD, current US$)                                          |Nigeria                |NGA                  |World            |WLD            |2022 | 16992036718| 
+                                      |DT.DOD.PBND.CD |2024-02-29        |PPG, bonds (DOD, current US$)                                                                                                                   | Nigeria                | NGA                  | World            | WLD            | 2022 | 16364972000 |
+| DT.DOD.PCBK.CD | 2024-02-29        | PPG, commercial banks (DOD, current US$)                                      |Nigeria                |NGA                  |China            |730            |2022 |          NA| 
+                                      |DT.DOD.PCBK.CD |2024-02-29        |PPG, commercial banks (DOD, current US$)                                                                                                        | Nigeria                | NGA                  | World            | WLD            | 2022 |  1477698613 |
+| DT.DOD.PROP.CD | 2024-02-29        | PPG, other private creditors (DOD, current US\$)                                                                                                                                   | Nigeria                | NGA                  | World            | WLD            | 2022 |          NA |
