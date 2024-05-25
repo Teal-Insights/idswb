@@ -1,4 +1,4 @@
-utils::globalVariables(c("data_last_updated"))
+utils::globalVariables(c("data_last_updated","api_code", "wb_creditor_name", "wb_debtor_country_name"))
 
 #' ids_query_data
 #' Gets debt information for a given country (debtor) that it owes to any creditor.
