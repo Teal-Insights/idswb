@@ -178,8 +178,7 @@ creditor <- c("China","World")
 
 # Querying data
 ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, series = series) %>% 
-  dplyr::filter(year == "2022") %>% 
-  knitr::kable()
+  dplyr::filter(year == "2022") 
 
 ```
 
@@ -195,8 +194,7 @@ creditor <- c("China","World")
 
 # Querying data
 ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, series = series) %>% 
-  dplyr::filter(year == "2022") %>% 
-  knitr::kable()
+  dplyr::filter(year == "2022") 
 ```
 
 ```{r}
