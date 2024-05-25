@@ -24,8 +24,8 @@ ids_query_data <- function(etl_object, debtor, creditor = c("China","World"), se
     dplyr::filter(api_code %in% series) %>%
     dplyr::collect() %>%
     tidyr::pivot_longer(names_to = "year", values_to = "debt", cols = -dplyr::all_of(columns_ignore)) %>%
-    dplyr::mutate(data_last_updated = lubridate::as_datetime(as.numeric(data_last_updated)),
-                  year = as.numeric(year))
+    dplyr::mutate(data_last_updated = lubridate::as_datetime(as.numeric(data_last_updated)), year = as.numeric(year)) %>%
+    base::as.data.frame()
   # return a tibble
   return(data)
 }
