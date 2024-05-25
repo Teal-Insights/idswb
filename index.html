@@ -178,8 +178,8 @@
 <code class="sourceCode R"><span><span class="va">unique_series</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="10%">
-<col width="89%">
+<col width="15%">
+<col width="84%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">ids_series_id</th>
@@ -244,33 +244,28 @@
 <p>We create an ETL object by specifying a string that defines the object’s class, and use the package <code>idswb</code> to gain access to the relevant data.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ceating an object</span></span>
-<span><span class="va">idswb_ob</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl.html" class="external-link">etl</a></span><span class="op">(</span><span class="st">"idswb"</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; No database was specified so I created one for you at:</span></span>
-<span><span class="co">#&gt; /Users/reubenopondo/Data Science/projects/clients/teal-insights/p5-idswb/idswb/file2ae02064952f.sqlite3</span></span></code></pre></div>
+<span><span class="co"># idswb_ob &lt;-etl("idswb", dir = getwd())</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="extract">Extract<a class="anchor" aria-label="anchor" href="#extract"></a>
 </h2>
 <p>The first step here is to acquire data</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_extract</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Extracting raw data...</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># idswb_ob %&gt;% etl_extract()</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="transform">Transform<a class="anchor" aria-label="anchor" href="#transform"></a>
 </h2>
 <p>This data might require conversion from its original format into files that are appropriate for SQL import, typically in CSV format.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_transform</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Transforming raw data ...</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># idswb_ob %&gt;% etl_transform()</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="load">Load<a class="anchor" aria-label="anchor" href="#load"></a>
 </h2>
 <p>Fill the SQL database with the processed data.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">idswb_ob</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_load</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading data to the database...</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># idswb_ob %&gt;% etl_load()</span></span></code></pre></div>
 <p>We can still perform the steps above at once</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ceating an object</span></span>
@@ -285,39 +280,37 @@
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/etl/man/etl_create.html" class="external-link">etl_load</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="using-etl_create-method">Using etl_create method<a class="anchor" aria-label="anchor" href="#using-etl_create-method"></a>
+</h2>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># idswb_ob %&gt;% etl_create()</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="querying-data">Querying data<a class="anchor" aria-label="anchor" href="#querying-data"></a>
 </h2>
 <p>We can now query debt of a given country that it owes to both China and the World as follows</p>
 <p><code>Query 1:</code></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">idswb_ob</span>, <span class="st">"ids_wb"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="co"># query data</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">wb_debtor_country_name</span> <span class="op">==</span> <span class="st">"Kenya"</span>,</span>
-<span>         <span class="va">wb_creditor_name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"China"</span>,<span class="st">"World"</span><span class="op">)</span>,</span>
-<span>         <span class="va">api_code</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DT.DOD.BLAT.CD"</span>,</span>
-<span>                         <span class="st">"DT.DOD.PBND.CD"</span>,</span>
-<span>                         <span class="st">'DT.DOD.MLAT.CD'</span>,</span>
-<span>                         <span class="st">"DT.DOD.PROP.CD"</span>,</span>
-<span>                         <span class="st">"DT.DOD.PCBK.CD"</span>,</span>
-<span>                         <span class="st">"DT.DOD.DPPG.CD"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html" class="external-link">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="co"># gather data</span></span>
-<span>  <span class="fu">gather</span><span class="op">(</span>key <span class="op">=</span> <span class="va">year</span>,value <span class="op">=</span> <span class="va">debt</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">api_code</span>, <span class="va">data_last_updated</span>, <span class="va">series_full_name</span>, <span class="va">wb_debtor_country_name</span>, <span class="va">wb_debtor_country_id</span>,  </span>
-<span>                                    <span class="va">wb_creditor_name</span>, <span class="va">wb_creditor_id</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>data_last_updated <span class="op">=</span> <span class="fu">as_datetime</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">data_last_updated</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># inputs specificatio</span></span>
+<span><span class="va">series</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DT.DOD.BLAT.CD"</span>,<span class="st">"DT.DOD.PBND.CD"</span>,<span class="st">'DT.DOD.MLAT.CD'</span>,<span class="st">"DT.DOD.PROP.CD"</span>,<span class="st">"DT.DOD.PCBK.CD"</span>,<span class="st">"DT.DOD.DPPG.CD"</span><span class="op">)</span></span>
+<span><span class="va">debtor</span> <span class="op">&lt;-</span> <span class="st">"Kenya"</span></span>
+<span><span class="va">creditor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"China"</span>,<span class="st">"World"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Querying data</span></span>
+<span><span class="fu"><a href="reference/ids_query_data.html">ids_query_data</a></span><span class="op">(</span>etl_object <span class="op">=</span> <span class="va">idswb_ob</span>, debtor <span class="op">=</span> <span class="va">debtor</span>, creditor <span class="op">=</span> <span class="va">creditor</span>, series <span class="op">=</span> <span class="va">series</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"2022"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
-<col width="4%">
 <col width="5%">
-<col width="59%">
-<col width="7%">
 <col width="6%">
+<col width="57%">
+<col width="7%">
+<col width="7%">
 <col width="5%">
-<col width="4%">
+<col width="5%">
 <col width="1%">
-<col width="3%">
+<col width="4%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">api_code</th>
@@ -389,35 +382,27 @@
 </tbody>
 </table>
 <p><code>Query 2:</code></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">idswb_ob</span>, <span class="st">"ids_wb"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="co"># query data</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">wb_debtor_country_name</span> <span class="op">==</span> <span class="st">"Nigeria"</span>,</span>
-<span>         <span class="va">wb_creditor_name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"China"</span>,<span class="st">"World"</span><span class="op">)</span>,</span>
-<span>         <span class="va">api_code</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DT.DOD.BLAT.CD"</span>,</span>
-<span>                         <span class="st">"DT.DOD.PBND.CD"</span>,</span>
-<span>                         <span class="st">'DT.DOD.MLAT.CD'</span>,</span>
-<span>                         <span class="st">"DT.DOD.PROP.CD"</span>,</span>
-<span>                         <span class="st">"DT.DOD.PCBK.CD"</span>,</span>
-<span>                         <span class="st">"DT.DOD.DPPG.CD"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html" class="external-link">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="co"># gather data</span></span>
-<span>  <span class="fu">gather</span><span class="op">(</span>key <span class="op">=</span> <span class="va">year</span>,value <span class="op">=</span> <span class="va">debt</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">api_code</span>, <span class="va">data_last_updated</span>, <span class="va">series_full_name</span>, <span class="va">wb_debtor_country_name</span>, <span class="va">wb_debtor_country_id</span>,  </span>
-<span>                                    <span class="va">wb_creditor_name</span>, <span class="va">wb_creditor_id</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>data_last_updated <span class="op">=</span> <span class="fu">as_datetime</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">data_last_updated</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># inputs specificatio</span></span>
+<span><span class="va">series</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DT.DOD.BLAT.CD"</span>,<span class="st">"DT.DOD.PBND.CD"</span>,<span class="st">'DT.DOD.MLAT.CD'</span>,<span class="st">"DT.DOD.PROP.CD"</span>,<span class="st">"DT.DOD.PCBK.CD"</span>,<span class="st">"DT.DOD.DPPG.CD"</span><span class="op">)</span></span>
+<span><span class="va">debtor</span> <span class="op">&lt;-</span> <span class="st">"Nigeria"</span></span>
+<span><span class="va">creditor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"China"</span>,<span class="st">"World"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Querying data</span></span>
+<span><span class="fu"><a href="reference/ids_query_data.html">ids_query_data</a></span><span class="op">(</span>etl_object <span class="op">=</span> <span class="va">idswb_ob</span>, debtor <span class="op">=</span> <span class="va">debtor</span>, creditor <span class="op">=</span> <span class="va">creditor</span>, series <span class="op">=</span> <span class="va">series</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"2022"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
-<col width="4%">
 <col width="5%">
-<col width="63%">
 <col width="6%">
-<col width="6%">
-<col width="4%">
-<col width="4%">
+<col width="57%">
+<col width="7%">
+<col width="7%">
+<col width="5%">
+<col width="5%">
 <col width="1%">
-<col width="3%">
+<col width="4%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">api_code</th>
