@@ -65,7 +65,7 @@ library(tidyverse)
 
 * unique_counterpart_area: information on counterparts (creditors)  
 ```{r}
-unique_counterpart_area %>% head() %>% gt::gt()
+unique_counterpart_area %>% head()
 ```
 
 ```{r}
@@ -74,7 +74,7 @@ unique_counterpart_area %>% head() %>% gt::gt()
 
 * unique_country: information on debtors     
 ```{r}
-unique_country %>% head() %>% knitr::kable()
+unique_country %>% head()
 ```
 
 ```{r}
@@ -82,7 +82,7 @@ unique_country %>% head() %>% knitr::kable()
 ```
 * unique_series: information on series  
 ```{r}
-unique_series %>% head() %>% gt::gt()
+unique_series %>% head()
 ```
 
 ```{r}
@@ -178,8 +178,7 @@ creditor <- c("China","World")
 
 # Querying data
 ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, series = series) %>% 
-  dplyr::filter(year == "2022") %>% 
-  kable()
+  dplyr::filter(year == "2022") 
 
 ```
 
@@ -195,8 +194,7 @@ creditor <- c("China","World")
 
 # Querying data
 ids_query_data(etl_object = idswb_ob, debtor = debtor, creditor = creditor, series = series) %>% 
-  dplyr::filter(year == "2022") %>% 
-  kable()
+  dplyr::filter(year == "2022")
 ```
 
 ```{r}
