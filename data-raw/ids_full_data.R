@@ -1,7 +1,8 @@
 
 # starts: -----------------------------------------------------------------
 # loading necessary libraries
-library(magrittr)
+library(dplyr)
+library(countrycode)
 
 # loading data: -----------------------------------------------------------
 # main data
@@ -9,8 +10,18 @@ ids <- readr::read_rds(file = "../../../../data/ids/data/ids_data_released_2024-
 ids_one <- ids[1:1750000,]
 ids_two <- ids[-c(1:1750000),]
 # metadata
+# creditors
 unique_counterpart_area <- readr::read_csv(file = paste0("../../../../data/ids/data/", "unique_counterpart_area.csv"))
+unique_counterpart_area <- unique_counterpart_area %>%
+  mutate(iso3c = countrycode(ids_counterpart_area_name, "country.name", "iso3c"))
+
+# debtors
 unique_country <- readr::read_csv(file = paste0("../../../../data/ids/data/", "unique_country.csv"))
+unique_country <- unique_country %>%
+  mutate(iso3c = countrycode(ids_country_name, "country.name", "iso3c"),
+         iso3c = case_when(is.na(iso3c) ~ ids_country_id, .default = iso3c))
+
+# series
 unique_series <- readr::read_csv(file = paste0("../../../../data/ids/data/", "unique_series.csv"))
 unique_time <- readr::read_csv(file = paste0("../../../../data/ids/data/", "unique_time.csv"))
 
